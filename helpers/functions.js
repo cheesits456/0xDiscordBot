@@ -36,16 +36,15 @@ module.exports = {
 	},
 
 	intFix: (number, decimalPlaces, keepZeros) => {
-		if (typeof number !== "string") number = String(number);
+		number = Number(number);
+		number = String(Math.round(number * (10 ** decimalPlaces)) / (10 ** decimalPlaces));
+
 		let [whole, decimals = ""] = number.split(".");
-		whole = parseInt(whole, 10).toLocaleString();
-		decimals = Number(decimals.substring(0, decimalPlaces + 1));
-		decimals = String(Math.round(decimals / 10));
-		if (keepZeros) {
-			while (decimals.length < decimalPlaces) decimals += "0";
-		} else {
-			while (decimals.endsWith("0")) decimals = decimals.substring(0, decimals.length - 1);
-		}
+
+		whole = Number(whole).toLocaleString();
+
+		if (keepZeros) while (decimals.length < decimalPlaces) decimals += "0";
+
 		return `${whole}${decimals ? `.${decimals}` : ""}`;
 	},
 };
