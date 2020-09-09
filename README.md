@@ -15,4 +15,6 @@ A bot created for the 0x community on Discord
 
 ### Live channel feed of all ZRX network transactions
 
+<p align="justify">Utilizes the <a href="https://docs.0xtracker.com/api-reference/introduction">0x Tracker API</a> to post details about every transaction on the ZRX Network to a read-only text channel in Discord. The Discord messages also contain a link to that transaction's page on the 0x Tracker website, as well as a Twitter link to draft a new Tweet about the transaction.</p>
+
 ![Network Transactions](https://cdn.discordapp.com/attachments/446968021492432900/753343492939448400/unknown.png)
