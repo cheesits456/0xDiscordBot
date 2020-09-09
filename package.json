@@ -1,0 +1,41 @@
+{
+	"name": "0x-discord-bot",
+	"version": "1.0.0",
+	"description": "A bot created for the 0x community on Discord",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"engines": {
+		"node": ">=14.0.0"
+	},
+	"os": [
+		"linux"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cheesits456/0x-Discord-Bot.git"
+	},
+	"author": {
+		"name": "cheesits456",
+		"email": "quin@cheesits456.dev",
+		"url": "https://cheesits456.dev"
+	},
+	"funding": {
+		"type": "GitHub",
+		"url": "https://github.com/sponsors/cheesits456"
+	},
+	"license": "AGPL-3.0",
+	"bugs": {
+		"url": "https://github.com/cheesits456/0x-Discord-Bot/issues"
+	},
+	"homepage": "https://github.com/cheesits456/0x-Discord-Bot#readme",
+	"private": true,
+	"dependencies": {
+		"@haileybot/sanitize-role-mentions": "^1.2.3",
+		"chalk": "^4.1.0",
+		"discord.js": "^12.3.1",
+		"node-fetch": "^2.6.1",
+		"puppeteer": "^5.2.1"
+	}
+}
