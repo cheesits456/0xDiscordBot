@@ -15,6 +15,8 @@ A bot created for the 0x community on Discord
 
 ### Live channel feed of all ZRX network transactions
 
+![boop](https://cdn.discordapp.com/attachments/446968021492432900/753342356014497973/unknown.png)
+
 <br><br><br><br><br>
 
 ![Network Transactions](https://media.discordapp.net/attachments/446968021492432900/753325856352501811/unknown.png)
