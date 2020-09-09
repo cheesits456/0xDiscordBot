@@ -3,7 +3,7 @@ A bot created for the 0x community on Discord
 
 ## Features
 
-<img align="right" alt="Staking Stats" src="https://cdn.discordapp.com/attachments/446968021492432900/753329750935732236/unknown.png">
+<img align="right" alt="Staking Stats" src="https://cdn.discordapp.com/attachments/446968021492432900/753329750935732236/unknown.png" width="300">
 
 ### Live statistics about ZRX staking
 
