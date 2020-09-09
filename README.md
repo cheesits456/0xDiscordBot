@@ -1,9 +1,8 @@
-# 0xDiscordBot
-A bot created for the 0x community on Discord
+![Banner](https://github.com/cheesits456/0xDiscordBot/raw/readme-images/banner.png)
 
 ## Features
 
-<img align="right" alt="Staking Stats" src="https://cdn.discordapp.com/attachments/446968021492432900/753350734262567002/unknown.png" width="315">
+<img align="right" alt="Staking Stats" src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/stats.png" width="315">
 
 ### Live statistics about ZRX staking
 
@@ -17,4 +16,4 @@ A bot created for the 0x community on Discord
 
 <p align="justify">Utilizes the <a href="https://docs.0xtracker.com/api-reference/introduction">0x Tracker API</a> to post details about every transaction on the ZRX Network to a read-only text channel in Discord. The Discord messages also contain a link to that transaction's page on the 0x Tracker website, as well as a Twitter link to draft a new Tweet about the transaction.</p>
 
-![Network Transactions](https://cdn.discordapp.com/attachments/446968021492432900/753343492939448400/unknown.png)
+![Network Transactions](https://github.com/cheesits456/0xDiscordBot/raw/readme-images/transaction.png)
