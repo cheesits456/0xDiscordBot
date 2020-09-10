@@ -5,13 +5,15 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 - [Features](#features)
   - [Staking Stats](#staking-stats)
-  - [Network Volume Stats](#network-volume-stats)
-  - [Network Transaction Feed](#network-transaction-feed)
+  - [Volume Stats](#volume-stats)
+  - [Transaction Feed](#transaction-feed)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Installation](#installation)
-  - [Configuration](#configuration)
+  - [Config Files](#config-files)
     - [config.js](#configjs)
+  - [Config Options](#config-options)
+    - [UserStatus](#userstatus)
 - [Usage](#usage)
   - [Running the Bot](#running-the-bot)
   - [Commands](#commands)
@@ -26,11 +28,11 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 <p align="justify">Provides information about the current staking epoch, such as the total ZRX currently staked, or how much time is remaining until the epoch expires. Stats are provided in the form of viewable but unjoinable voice channels, collapsable under their own category at the top of the server's channel list.</p>
 
-## Network Volume Stats
+## Volume Stats
 
 <p align="justify">Provides information about the total dollar value (USD) of all trades on the ZRX network for the past 24 hours, as well as all time. Similar to the staking stats, the network volume statistics also use a voice channel in its own collapsable category.</p>
 
-## Network Transaction Feed
+## Transaction Feed
 
 <p align="justify">Utilizes the <a href="https://docs.0xtracker.com/api-reference/introduction">0x Tracker API</a> to post details about every transaction on the ZRX Network to a read-only text channel in Discord. The Discord messages also contain a link to that transaction's page on the 0x Tracker website, as well as a Twitter link to draft a new Tweet about the transaction.</p>
 
@@ -67,11 +69,23 @@ And finally, install the node dependencies:
 npm install
 ```
 
-## Configuration
+## Config Files
 
 ### config.js
 
-<p align="justify">fdas</p>
+| Parameter | Type                                   | Description                                                         |
+|:--------- |:-------------------------------------- |:------------------------------------------------------------------- |
+| feedIcons | Boolean                                | Whether or not to use token icon emojis in transaction feed channel |
+| owners    | Array&lt;UserID&gt;                    | Users who are allowed to use the restart command                    |
+| prefix    | String                                 | The default prefix for the bot                                      |
+| statuses  | Array&lt;[UserStatus](#userstatus)&gt; | Bot statuses - minimum of 1, no maximum, cycles every 15 seconds    |
+| token     | String                                 | The token of your Discord Bot                                       |
+
+## Config Options
+
+### UserStatus
+
+
 
 # Usage
 
