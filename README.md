@@ -8,6 +8,7 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
   - [Network Volume Stats](#network-volume-stats)
   - [Network Transaction Feed](#network-transaction-feed)
 - [Getting Started](#getting-started)
+  - [Requirements](#requirements)
   - [Installation](#installation)
 
 ## Features
@@ -30,4 +31,19 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 ## Getting Started
 
+### Requirements
+
+<p align="justify">You'll need the following installed on your system in order to proceed with setup:</p>
+
+- Git
+- Node.js v14 or higher
+
 ### Installation
+
+Execute the following commands to download the repo and install the node dependencies:
+
+```bash
+git clone https://github.com/cheesits456/0xDiscordBot.git
+cd 0xDiscordBot
+npm i
+```
