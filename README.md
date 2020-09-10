@@ -13,7 +13,7 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 # Features
 
-<img align="right" alt="Staking Stats" src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/stats.png" width="300">
+<img align="right" alt="Staking Stats" src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/stats.png" width="280">
 
 ## Staking Stats
 
