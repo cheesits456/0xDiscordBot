@@ -10,6 +10,7 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Installation](#installation)
+  - [Setup](#setup)
 
 # Features
 
@@ -40,10 +41,22 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 ## Installation
 
-Execute the following commands to download the repo and install the node dependencies:
+Start by cloning the git repo into a new folder:
 
 ```bash
 git clone https://github.com/cheesits456/0xDiscordBot.git
-cd 0xDiscordBot
-npm i
 ```
+
+Next, `cd` into the directory:
+
+```bash
+cd 0xDiscordBot
+```
+
+And finally, install the node dependencies:
+
+```bash
+npm install
+```
+
+## Setup
