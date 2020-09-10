@@ -12,6 +12,7 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
     - [Requirements](#requirements)
     - [Installation](#installation)
   - [Configuration](#configuration)
+    - [config.js](#config.js)
   - [Running the Bot](#running-the-bot)
   - [Commands](#commands)
 - [Author](#author)
@@ -46,6 +47,8 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 - Git
 - Node.js v14 or higher
 
+<blockquote align="justify">This bot has only been tested on Linux. It may turn out to work perfectly fine on Windows, but be aware that it also may turn out <b>not</b> to work perfectly fine on Windows</blockquote>
+
 ### Installation
 
 Start by cloning the git repo into a new folder:
@@ -67,6 +70,10 @@ npm install
 ```
 
 ## Configuration
+
+### config.js
+
+<p align="justify">fdas</p>
 
 ## Running the Bot
 
