@@ -1,5 +1,5 @@
-![Banner](https://github.com/cheesits456/0xDiscordBot/raw/readme-images/banner.png)  
-_This is a bot for the 0x Community on Discord, created with :heart: by [cheesits456](https://github.com/cheesits456)_
+![Banner][banner-img]  
+_This is a bot for the 0x Community on Discord, created with :heart: by [cheesits456][github]_
 
 # Table of Contents
 
@@ -14,6 +14,8 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
   - [Configuration](#configuration)
   - [Running the Bot](#running-the-bot)
   - [Commands](#commands)
+- [Author](#author)
+- [License](#license)
 
 # Features
 
@@ -31,7 +33,7 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 <p align="justify">Utilizes the <a href="https://docs.0xtracker.com/api-reference/introduction">0x Tracker API</a> to post details about every transaction on the ZRX Network to a read-only text channel in Discord. The Discord messages also contain a link to that transaction's page on the 0x Tracker website, as well as a Twitter link to draft a new Tweet about the transaction.</p>
 
-![Network Transactions](https://github.com/cheesits456/0xDiscordBot/raw/readme-images/transaction.png)
+![Network Transactions][transaction-img]
 
 # Usage
 
@@ -77,3 +79,23 @@ npm install
 To kill the bot's main process, Press <kbd>CTRL</kbd> + <kbd>C</kbd> in its terminal window.
 
 ## Commands
+
+# Author
+
+### [cheesits456][github] <br> [![EMail][email-img]][email] [![Website][website-img]][website]
+
+# License
+
+This project is licensed under [AGPL-3.0][license]
+
+<!-- Link Anchors -->
+
+[banner-img]:		https://github.com/cheesits456/0xDiscordBot/raw/readme-images/banner.png
+[email-img]:		https://img.shields.io/badge/-E--Mail-e722e7?style=for-the-badge
+[transaction-img]:	https://github.com/cheesits456/0xDiscordBot/raw/readme-images/transaction.png
+[website-img]:		https://img.shields.io/badge/-Website-e722e7?style=for-the-badge
+
+[email]:	mailto:quin@cheesits456.dev
+[github]:	https://github.com/cheesits456
+[license]:	https://github.com/cheesits456/0xDiscordBot/blob/master/LICENSE.md
+[website]:	https://cheesits456.dev
