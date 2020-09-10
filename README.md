@@ -7,12 +7,12 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
   - [Staking Stats](#staking-stats)
   - [Network Volume Stats](#network-volume-stats)
   - [Network Transaction Feed](#network-transaction-feed)
-- [Usage](#usage)
-  - [Getting Started](#getting-started)
-    - [Requirements](#requirements)
-    - [Installation](#installation)
+- [Getting Started](#getting-started)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
   - [Configuration](#configuration)
-    - [config.js](#config.js)
+    - [config.js](#configjs)
+- [Usage](#usage)
   - [Running the Bot](#running-the-bot)
   - [Commands](#commands)
 - [Author](#author)
@@ -36,11 +36,9 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 ![Network Transactions][transaction-img]
 
-# Usage
+# Getting Started
 
-## Getting Started
-
-### Requirements
+## Requirements
 
 <p align="justify">You'll need the following installed on your system in order to proceed with setup:</p>
 
@@ -49,7 +47,7 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 <blockquote align="justify">This bot has only been tested on Linux. It may turn out to work perfectly fine on Windows, but be aware that it also may turn out <b>not</b> to work perfectly fine on Windows</blockquote>
 
-### Installation
+## Installation
 
 Start by cloning the git repo into a new folder:
 
@@ -74,6 +72,8 @@ npm install
 ### config.js
 
 <p align="justify">fdas</p>
+
+# Usage
 
 ## Running the Bot
 
