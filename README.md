@@ -7,6 +7,10 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
   - [Live statistics about ZRX staking](#live-statistics-about-zrx-staking)
   - [Live statistics about ZRX network volume](#live-statistics-about-zrx-network-volume)
   - [Live feed of all ZRX network transactions](#live-feed-of-all-zrx-network-transactions)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+
+<br>
 
 ## Features
 
@@ -25,3 +29,9 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 <p align="justify">Utilizes the <a href="https://docs.0xtracker.com/api-reference/introduction">0x Tracker API</a> to post details about every transaction on the ZRX Network to a read-only text channel in Discord. The Discord messages also contain a link to that transaction's page on the 0x Tracker website, as well as a Twitter link to draft a new Tweet about the transaction.</p>
 
 ![Network Transactions](https://github.com/cheesits456/0xDiscordBot/raw/readme-images/transaction.png)
+
+<br>
+
+## Getting Started
+
+### Installation
