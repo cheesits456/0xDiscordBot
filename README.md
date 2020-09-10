@@ -78,8 +78,33 @@ npm install
 | feedIcons | Boolean                                | Whether or not to use token icon emojis in transaction feed channel |
 | owners    | Array&lt;UserID&gt;                    | Users who are allowed to use the restart command                    |
 | prefix    | String                                 | The default prefix for the bot                                      |
-| statuses  | Array&lt;[UserStatus](#userstatus)&gt; | Bot statuses - minimum of 1, no maximum, cycles every 15 seconds    |
+| statuses  | Array&lt;[UserStatus](#userstatus)&gt; | Bot statuses to show in member list<ul><li>minimum of 1</li><li>no maximum</li><li>cycles every 15 seconds</li></ul> |
 | token     | String                                 | The token of your Discord Bot                                       |
+
+<details><summary>Sample <code>config.js</code></summary>
+  
+  <br>
+  
+  ```js
+  module.exports = {
+		feedIcons: true,
+		owners: [
+			"306018440639152128",
+			"517534579335233579"
+		],
+		prefix: "!",
+		statuses: [{
+			name: "{trades} trades (24h)",
+			type: "WATCHING"
+		}, {
+			name: "{traders} traders (24h)",
+			type: "WATCHING"
+		}],
+		token: "T0K3N"
+	};
+  ```
+  
+</details>
 
 ## Config Options
 
