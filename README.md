@@ -1,7 +1,8 @@
 ![Banner][banner-img]  
 _This is a bot for the 0x Community on Discord, created with :heart: by [cheesits456][github]_
 
-# Table of Contents
+<details><summary><b>Table of Contents</b></summary>
+<br>
 
 - [Features](#features)
   - [Staking Stats](#staking-stats)
@@ -19,6 +20,8 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
   - [Commands](#commands)
 - [Author](#author)
 - [License](#license)
+
+</details><hr>
 
 # Features
 
@@ -42,12 +45,12 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 ## Requirements
 
+<blockquote align="justify">This bot has only been tested on Linux. It may turn out to work perfectly fine on Windows, but be aware that it also may turn out <b>not</b> to work perfectly fine on Windows</blockquote>
+
 <p align="justify">You'll need the following installed on your system in order to proceed with setup:</p>
 
 - Git
 - Node.js v14 or higher
-
-<blockquote align="justify">This bot has only been tested on Linux. It may turn out to work perfectly fine on Windows, but be aware that it also may turn out <b>not</b> to work perfectly fine on Windows</blockquote>
 
 ## Installation
 
@@ -108,7 +111,7 @@ module.exports = {
 
 ### UserStatus
 
-
+<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan, lectus ac semper pretium, nibh dui facilisis augue, ut tincidunt lorem nisi a sem. Mauris fermentum turpis eget dolor accumsan, et vulputate nibh pretium. Morbi facilisis justo risus, nec blandit turpis malesuada ac.</p>
 
 # Usage
 
@@ -123,6 +126,8 @@ module.exports = {
 To kill the bot's main process, Press <kbd>CTRL</kbd> + <kbd>C</kbd> in its terminal window.
 
 ## Commands
+
+<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis pellentesque feugiat. Maecenas id erat dignissim libero egestas cursus sit amet non nibh. Duis lobortis finibus tincidunt. Sed eu ligula at enim eleifend congue vitae eu massa. Integer eleifend nunc magna, quis rhoncus risus eleifend et.</p>
 
 # Author
 
