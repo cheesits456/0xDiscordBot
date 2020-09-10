@@ -7,10 +7,13 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
   - [Staking Stats](#staking-stats)
   - [Network Volume Stats](#network-volume-stats)
   - [Network Transaction Feed](#network-transaction-feed)
-- [Getting Started](#getting-started)
-  - [Requirements](#requirements)
-  - [Installation](#installation)
-  - [Setup](#setup)
+- [Usage](#usage)
+  - [Getting Started](#getting-started)
+    - [Requirements](#requirements)
+    - [Installation](#installation)
+  - [Configuration](#configuration)
+  - [Running the Bot](#running-the-bot)
+  - [Commands](#commands)
 
 # Features
 
@@ -30,16 +33,18 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 ![Network Transactions](https://github.com/cheesits456/0xDiscordBot/raw/readme-images/transaction.png)
 
-# Getting Started
+# Usage
 
-## Requirements
+## Getting Started
+
+### Requirements
 
 <p align="justify">You'll need the following installed on your system in order to proceed with setup:</p>
 
 - Git
 - Node.js v14 or higher
 
-## Installation
+### Installation
 
 Start by cloning the git repo into a new folder:
 
@@ -59,4 +64,16 @@ And finally, install the node dependencies:
 npm install
 ```
 
-## Setup
+## Configuration
+
+## Running the Bot
+
+<p align="justify">With the config set up, you can now start the bot with the following command:</p>
+
+```bash
+./start.sh
+```
+
+To kill the bot's main process, Press <kbd>CTRL</kbd> + <kbd>C</kbd> in its terminal window.
+
+## Commands
