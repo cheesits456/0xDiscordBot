@@ -82,6 +82,8 @@ To kill the bot's main process, Press <kbd>CTRL</kbd> + <kbd>C</kbd> in its term
 
 # Author
 
+<img alt="Profile Pic" src="https://github.com/cheesits456/cheesits456/raw/master/avatar.gif" align="left" height="75">
+
 ### [cheesits456][github] <br> [![EMail][email-img]][email] [![Website][website-img]][website]
 
 # License
