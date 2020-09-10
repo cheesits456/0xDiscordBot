@@ -1,4 +1,5 @@
-![Banner](https://github.com/cheesits456/0xDiscordBot/raw/readme-images/banner.png)
+![Banner](https://github.com/cheesits456/0xDiscordBot/raw/readme-images/banner.png)  
+_This is a bot for the 0x Community on Discord, created with :heart: by [cheesits456](https://github.com/cheesits456)_
 
 ## Table of Contents
 
