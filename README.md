@@ -11,6 +11,7 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Installation](#installation)
+- [Configuration](#configuration)
   - [Config Files](#config-files)
     - [config.js](#configjs)
   - [Config Options](#config-options)
@@ -71,6 +72,8 @@ And finally, install the node dependencies:
 ```bash
 npm install
 ```
+
+# Configuration
 
 ## Config Files
 
