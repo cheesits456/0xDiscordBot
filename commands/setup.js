@@ -16,7 +16,7 @@ class Setup extends Command {
 			memberPermissions: ["MANAGE_GUILD"],
 			botPermissions: ["SEND_MESSAGES", "MANAGE_CHANNELS", "MANAGE_ROLES"],
 			nsfw: false,
-			ownerOnly: false,
+			ownerOnly: true,
 			cooldown: 3000
 		});
 	}
