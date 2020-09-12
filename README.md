@@ -213,8 +213,6 @@ module.exports = {
 }
 ```
 
-<br>
-
 <img src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus2.png" align="left" height="110">
 
 ```js
