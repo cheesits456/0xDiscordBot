@@ -122,9 +122,9 @@ module.exports = {
 
 **Location:** `./base/Icons.js`
 
-<p align="justify">This file's default values will work fine for the official 0x Discord Bot. The documentation for this file is here for other people looking to host their own instance of the bot</p>
+<p align="justify"><i>This file's default values will work fine for the official 0x Discord Bot. The documentation for this file is here for other people looking to host their own instance of the bot</i></p>
 
-<p align="justify">This file defines which emojis the bot should use for different tokens in the transaction feed channel. If the <code>feedIcons</code> option in <a href="#configjs">config.js</a> is set to <code>false</code>, this file is ignored.<br>If you're someone looking to host your own separate instance of this bot, the default values set in this file won't work for you - you'll need to change the IDs to ones for emojis your bot has access to (bots can only use emojis from servers they're in).</p>
+<p align="justify">This file defines which emojis the bot should use for different tokens in the transaction feed channel. If the <code>feedIcons</code> option in <a href="#configjs">config.js</a> is set to <code>false</code>, this file is ignored. If you're someone looking to host your own separate instance of this bot, the default values set in this file won't work for you - you'll need to change the IDs to ones for emojis your bot has access to (bots can only use emojis from servers they're in).</p>
 
 | Parameter                     | Type    | Description                                                           |
 |:------------------------------|:--------|:----------------------------------------------------------------------|
