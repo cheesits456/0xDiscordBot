@@ -137,7 +137,7 @@ module.exports = {
 }
 ```
 
-</details
+</details>
 
 # Usage
 
