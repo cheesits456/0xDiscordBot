@@ -27,7 +27,7 @@ module.exports = {
 		},
 		{
 			name: "{traders} traders (24h)",
-			type: "WATCHING"
+			type: "LISTENING"
 		}
 	],
 
