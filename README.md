@@ -21,6 +21,10 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 - [Usage](#usage)
   - [Running the Bot](#running-the-bot)
   - [Commands](#commands)
+    - [Ping](#ping)
+	- [Prefix](#prefix)
+	- [Restart](#restart)
+	- [Setup](#setup)
 - [Author](#author)
 - [License](#license)
 
@@ -90,7 +94,7 @@ npm install
 | Parameter | Type                                   | Description                                                                                          |
 |:----------|:---------------------------------------|:-----------------------------------------------------------------------------------------------------|
 | feedIcons | Boolean                                | Whether or not to use token icon emojis in transaction feed channel (see also: [Icons.js](#iconsjs)) |
-| owners    | Array&lt;UserID&gt;                    | Users who are allowed to use the restart command                                                     |
+| owners    | Array&lt;UserID&gt;                    | Users who are allowed to use the restart and setup commands                                          |
 | prefix    | String                                 | The default prefix for the bot                                                                       |
 | statuses  | Array&lt;[UserStatus](#userstatus)&gt; | Bot statuses to show in member list<br>• minimum of 1<br>• no maximum<br>• cycles every 15 seconds   |
 | token     | String                                 | The token of your Discord Bot                                                                        |
@@ -253,7 +257,21 @@ To kill the bot's main process, Press <kbd>CTRL</kbd> + <kbd>C</kbd> in its term
 
 ## Commands
 
-<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis pellentesque feugiat. Maecenas id erat dignissim libero egestas cursus sit amet non nibh. Duis lobortis finibus tincidunt. Sed eu ligula at enim eleifend congue vitae eu massa. Integer eleifend nunc magna, quis rhoncus risus eleifend et.</p>
+### Ping
+
+
+
+### Prefix
+
+
+
+### Restart
+
+
+
+### Setup
+
+
 
 <hr>
 
