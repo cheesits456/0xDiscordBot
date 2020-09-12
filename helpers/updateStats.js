@@ -18,7 +18,6 @@ module.exports = async (guild, msg) => {
 		rewards: "Epoch rewards",
 	};
 
-	// If data.stats.staking contains an,
 	if (Object.keys(data.stats.staking).filter(e => e !== "category").length) {
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();
