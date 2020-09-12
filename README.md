@@ -204,7 +204,7 @@ module.exports = {
 
 <details><summary>Examples</summary>
 
-<img src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus1.png" align="left" height="124">
+<img src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus1.png" align="left" height="110">
 
 ```js
 {
