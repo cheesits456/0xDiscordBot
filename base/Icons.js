@@ -1,8 +1,8 @@
-module.exports = {
-	// Default crypto Icon (used if token doesn't have anything else set in this file)
-	default: "753024461254426674",
+// See https://github.com/cheesits456/0xDiscordBot#iconsjs for documentation
 
-	// Cryptocurrency Icons
+module.exports = {
+	default: "753024461254426674",
+	twitter: "752981062128369805",
 	ALEPH: "752511902357258240",
 	AMPL: "753009860026695680",
 	ANT: "752667695736029244",
@@ -45,8 +45,5 @@ module.exports = {
 	ZRX: "752998693048811571",
 	imBTC: "752392862053957673",
 	renBTC: "752457288299708439",
-	sUSD: "752398395313881098",
-
-	// Twitter icon
-	twitter: "752981062128369805"
+	sUSD: "752398395313881098"
 };

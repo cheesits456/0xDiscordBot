@@ -30,7 +30,12 @@ module.exports = class {
 			if (toDisplay.text.includes("{trades}"))
 				toDisplay.text = toDisplay.text.replace(
 					"{trades}",
-					`${Math.round((await (await fetch("https://api.0xtracker.com/stats/network?period=day")).json()).tradeCount / 10) / 100}k`
+					`${
+						Math.round(
+							(await (await fetch("https://api.0xtracker.com/stats/network?period=day")).json())
+								.tradeCount / 10
+						) / 100
+					}k`
 				);
 
 			client.user.setActivity(toDisplay.text, { type: toDisplay.type });
@@ -77,5 +82,9 @@ module.exports = class {
 			}
 			rm("./restartMessage.json");
 		}
+
+		client.logger.log(
+			`Use this link to invite the bot to a server:\nhttps://discord.com/oauth2/authorize?client_id=${client.user.id}&permissions=1897139216&scope=bot`
+		);
 	}
 };
