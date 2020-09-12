@@ -199,10 +199,10 @@ module.exports = {
 
 | String      | Replaced With                                         |
 |:------------|:------------------------------------------------------|
-| `{traders}` | The number of active traders within the last 24 hours |
 | `{trades}`  | The number of trades made withing the last 24 hours   |
+| `{traders}` | The number of active traders within the last 24 hours |
 
-<details><summary>Examples</summary>
+<details><summary>Example `UserStatus`es</summary>
 
 <img src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus1.png" align="left" height="110">
 
