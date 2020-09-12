@@ -1,4 +1,4 @@
-const Command = require("../../base/Command.js"),
+const Command = require("../base/Command.js"),
 	write = require("fs").writeFileSync,
 	Discord = require("discord.js");
 
