@@ -263,6 +263,8 @@ This project is licensed under [AGPL-3.0][license]
 [email-img]:		https://img.shields.io/badge/-E--Mail-e722e7?style=for-the-badge
 [transaction-img]:	https://github.com/cheesits456/0xDiscordBot/raw/readme-images/transaction.png
 [website-img]:		https://img.shields.io/badge/-Website-e722e7?style=for-the-badge
+[UserStatus1]:      https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus1.png
+[UserStatus2]:      https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus2.png
 
 [email]:	mailto:quin@cheesits456.dev
 [github]:	https://github.com/cheesits456
