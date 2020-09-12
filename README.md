@@ -14,8 +14,10 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 - [Configuration](#configuration)
   - [Config Files](#config-files)
     - [config.js](#configjs)
+	- [Icons.js](#iconsjs)
   - [Config Options](#config-options)
     - [UserStatus](#userstatus)
+	- [ActivityType](#activitytype)
 - [Usage](#usage)
   - [Running the Bot](#running-the-bot)
   - [Commands](#commands)
@@ -79,13 +81,15 @@ npm install
 
 ### config.js
 
-| Parameter | Type                                   | Description                                                                                        |
-|:----------|:---------------------------------------|:---------------------------------------------------------------------------------------------------|
-| feedIcons | Boolean                                | Whether or not to use token icon emojis in transaction feed channel                                |
-| owners    | Array&lt;UserID&gt;                    | Users who are allowed to use the restart command                                                   |
-| prefix    | String                                 | The default prefix for the bot                                                                     |
-| statuses  | Array&lt;[UserStatus](#userstatus)&gt; | Bot statuses to show in member list<br>• minimum of 1<br>• no maximum<br>• cycles every 15 seconds |
-| token     | String                                 | The token of your Discord Bot                                                                      |
+**Location:** `./config.js`
+
+| Parameter | Type                                   | Description                                                                                          |
+|:----------|:---------------------------------------|:-----------------------------------------------------------------------------------------------------|
+| feedIcons | Boolean                                | Whether or not to use token icon emojis in transaction feed channel (see also: [Icons.js](#iconsjs)) |
+| owners    | Array&lt;UserID&gt;                    | Users who are allowed to use the restart command                                                     |
+| prefix    | String                                 | The default prefix for the bot                                                                       |
+| statuses  | Array&lt;[UserStatus](#userstatus)&gt; | Bot statuses to show in member list<br>• minimum of 1<br>• no maximum<br>• cycles every 15 seconds   |
+| token     | String                                 | The token of your Discord Bot                                                                        |
 
 <details><summary>Sample <code>config.js</code></summary>
 
@@ -110,18 +114,11 @@ module.exports = {
 
 </details>
 
+### Icons.js
+
+**Location:** `./base/Icons.js`
+
 ## Config Options
-
-### ActivityType
-
-**Type:** String
-
-Any one of the following values:
-
-- `LISTENING`
-- `PLAYING`
-- `STREAMING`
-- `WATCHING`
 
 ### UserStatus
 
@@ -149,6 +146,17 @@ Any one of the following values:
 ```
 
 </details>
+
+### ActivityType
+
+**Type:** String
+
+Any one of the following values:
+
+- `LISTENING`
+- `PLAYING`
+- `STREAMING`
+- `WATCHING`
 
 # Usage
 
