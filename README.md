@@ -124,6 +124,8 @@ module.exports = {
 
 **Location:** `./base/Icons.js`
 
+<p align="justify">This file defines which emojis the bot should use for different tokens in the transaction feed channel. If the `feedIcons` option in [config.js](#configjs) is set to `false`, this file is ignored.</p>
+
 | Parameter                     | Type    | Description                                                           |
 |:------------------------------|:--------|:----------------------------------------------------------------------|
 | default                       | EmojiID | The icon used for tokens that don't have an icon defined in this file |
@@ -202,7 +204,7 @@ module.exports = {
 | `{trades}`  | The number of trades made withing the last 24 hours   |
 | `{traders}` | The number of active traders within the last 24 hours |
 
-<details><summary>Example <code>UserStatus</code>es</summary>
+<details><summary>Example UserStatuses</summary>
 
 <img src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus1.png" align="left" height="110">
 
