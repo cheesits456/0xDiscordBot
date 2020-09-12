@@ -124,7 +124,7 @@ module.exports = {
 
 **Location:** `./base/Icons.js`
 
-<p align="justify">This file defines which emojis the bot should use for different tokens in the transaction feed channel. If the `feedIcons` option in [config.js](#configjs) is set to `false`, this file is ignored.</p>
+<p align="justify">This file defines which emojis the bot should use for different tokens in the transaction feed channel. If the <code>feedIcons</code> option in <a href="#configjs">config.js</a> is set to <code>false</code>, this file is ignored.</p>
 
 | Parameter                     | Type    | Description                                                           |
 |:------------------------------|:--------|:----------------------------------------------------------------------|
