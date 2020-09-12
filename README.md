@@ -112,6 +112,17 @@ module.exports = {
 
 ## Config Options
 
+### ActivityType
+
+**Type:** String
+
+Any one of the following values:
+
+- `LISTENING`
+- `PLAYING`
+- `STREAMING`
+- `WATCHING`
+
 ### UserStatus
 
 **Type:** Object
