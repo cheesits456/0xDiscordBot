@@ -123,10 +123,10 @@ module.exports = {
 
 #### Variable Values
 
-| String    | Replaced With                                         |
-|:----------|:------------------------------------------------------|
-| {traders} | The number of active traders within the last 24 hours |
-| {trades}  | The number of trades made withing the last 24 hours   |
+| String      | Replaced With                                         |
+|:------------|:------------------------------------------------------|
+| `{traders}` | The number of active traders within the last 24 hours |
+| `{trades}`  | The number of trades made withing the last 24 hours   |
 
 <details><summary>Sample <code>UserStatus</code></summary>
 
