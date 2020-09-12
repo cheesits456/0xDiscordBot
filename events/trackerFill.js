@@ -11,10 +11,10 @@ module.exports = class {
 
 		for (const [, guild] of client.guilds.cache) {
 			let guildData = await client.findOrCreateGuild(guild.id);
-			if (!guildData.stats.volume.fills) continue;
-			const channel = guild.channels.cache.get(guildData.stats.volume.fills);
+			if (!guildData.stats.trades) continue;
+			const channel = guild.channels.cache.get(guildData.stats.trades);
 			if (!channel) {
-				delete guildData.stats.volume.fills;
+				delete guildData.stats.trades;
 				await guildData.save();
 				continue;
 			}
