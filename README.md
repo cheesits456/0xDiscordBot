@@ -44,6 +44,8 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 ![Network Transactions][transaction-img]
 
+<br>
+
 # Getting Started
 
 ## Requirements
@@ -74,6 +76,8 @@ And finally, install the node dependencies:
 ```bash
 npm install
 ```
+
+<br>
 
 # Configuration
 
@@ -220,6 +224,8 @@ Any one of the following values:
 - `STREAMING`
 - `WATCHING`
 
+<br>
+
 # Usage
 
 ## Running the Bot
@@ -236,11 +242,15 @@ To kill the bot's main process, Press <kbd>CTRL</kbd> + <kbd>C</kbd> in its term
 
 <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis pellentesque feugiat. Maecenas id erat dignissim libero egestas cursus sit amet non nibh. Duis lobortis finibus tincidunt. Sed eu ligula at enim eleifend congue vitae eu massa. Integer eleifend nunc magna, quis rhoncus risus eleifend et.</p>
 
+<br>
+
 # Author
 
 <img alt="Profile Pic" src="https://github.com/cheesits456/cheesits456/raw/master/avatar.gif" align="left" height="75">
 
 ### [cheesits456][github] <br> [![EMail][email-img]][email] [![Website][website-img]][website]
+
+<br>
 
 # License
 
