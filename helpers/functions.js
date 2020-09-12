@@ -37,14 +37,10 @@ module.exports = {
 
 	intFix: (number, decimalPlaces, keepZeros) => {
 		number = Number(number);
-		number = String(Math.round(number * (10 ** decimalPlaces)) / (10 ** decimalPlaces));
-
+		number = String(Math.round(number * 10 ** decimalPlaces) / 10 ** decimalPlaces);
 		let [whole, decimals = ""] = number.split(".");
-
 		whole = Number(whole).toLocaleString();
-
 		if (keepZeros) while (decimals.length < decimalPlaces) decimals += "0";
-
 		return `${whole}${decimals ? `.${decimals}` : ""}`;
-	},
+	}
 };

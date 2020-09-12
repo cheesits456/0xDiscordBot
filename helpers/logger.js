@@ -34,14 +34,18 @@ class Logger {
 		if (typeof options === "string") options = { type: options };
 		if (!options.type) options.type = "log";
 		if (typeof content !== "string") {
-			if (typeof content === "object" && Object.prototype.toString.call(content).match(/\[object (.+)]/)[1] === "Error") {
+			if (
+				typeof content === "object" &&
+				Object.prototype.toString.call(content).match(/\[object (.+)]/)[1] === "Error"
+			) {
 				content = content.stack;
 				options.type = "error";
 			} else content = require("util").inspect(content, { depth: 1 });
 		}
 
 		content = content.replace(new RegExp(process.env.PWD, "g"), ".");
-		for (const line of content.split("\n")) console.log(`${grey(`[${format(new Date())}]`)} ${typeName(options.type, true)} ${line}`);
+		for (const line of content.split("\n"))
+			console.log(`${grey(`[${format(new Date())}]`)} ${typeName(options.type, true)} ${line}`);
 	}
 
 	static error(log, options = {}) {

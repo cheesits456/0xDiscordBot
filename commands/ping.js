@@ -1,4 +1,5 @@
-const Command = require("../../base/Command.js");
+const Command = require("../../base/Command.js"),
+	Discord = require("discord.js");
 
 class Ping extends Command {
 	constructor(client) {
@@ -24,23 +25,13 @@ class Ping extends Command {
 		let i = 0,
 			s = Date.now();
 		while (Date.now() - s <= 1) i++;
-		let embed = {
-			color: parseInt(msg.client.config.embed.color.split("#")[1], 16),
-			title: "🏓 **PONG!**",
-			fields: [
-				{
-					name: "Response ​ ​ ​ ​ ​ ​ ​ ​ ​",
-					value: `\`\`\`ini\n[ ${m.createdTimestamp - msg.createdTimestamp}ms ]\`\`\``,
-					inline: true
-				},
-				{
-					name: "Websocket ​ ​ ​ ​ ​ ​ ​ ​",
-					value: `\`\`\`ini\n [ ${Math.floor(msg.client.ws.ping)}ms ]\`\`\``,
-					inline: true
-				}
-			]
-		};
-		m.edit("", { embed });
+
+		let embed = new Discord.MessageEmbed()
+			.setTitle("🏓 **PONG!**")
+			.addField("Response ​ ​ ​ ​ ​ ​ ​ ​ ​", `\`\`\`ini\n[ ${m.createdTimestamp - msg.createdTimestamp}ms ]\`\`\``, true)
+			.addField("Websocket ​ ​ ​ ​ ​ ​ ​ ​", `\`\`\`ini\n [ ${Math.floor(msg.client.ws.ping)}ms ]\`\`\``, true);
+
+		m.edit("", embed);
 	}
 }
 

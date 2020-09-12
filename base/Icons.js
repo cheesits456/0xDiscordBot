@@ -1,8 +1,8 @@
 module.exports = {
-	// Default crypto Icon (Discord emoji ID, used if token doesn't have anything else set in this file)
+	// Default crypto Icon (used if token doesn't have anything else set in this file)
 	default: "753024461254426674",
 
-	// Cryptocurrency Icons (Discord emoji IDs)
+	// Cryptocurrency Icons
 	ALEPH: "752511902357258240",
 	AMPL: "753009860026695680",
 	ANT: "752667695736029244",
@@ -47,7 +47,6 @@ module.exports = {
 	renBTC: "752457288299708439",
 	sUSD: "752398395313881098",
 
-	// Website icons (Discord emoji IDs)
-	twitter: "752981062128369805",
-	zrxTracker: "753077313582661744"
+	// Twitter icon
+	twitter: "752981062128369805"
 };

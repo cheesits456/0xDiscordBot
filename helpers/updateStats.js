@@ -4,15 +4,21 @@ const fetch = require("node-fetch"),
 module.exports = async (guild, msg) => {
 	const client = guild.client;
 
+	// Fetch the guild's configuration object
 	let data = await guild.client.findOrCreateGuild(guild.id);
+
+	// Set a variable to keep track of whether any changes have been made to
+	// the guild's configuration object
 	let modified = false;
 
+	// Base names used for the staking stats channels
 	const names = {
 		staked: "ZRX staked",
 		ends: "Epoch ends in",
-		rewards: "Epoch rewards"
+		rewards: "Epoch rewards",
 	};
 
+	// If data.stats.staking contains an,
 	if (Object.keys(data.stats.staking).filter(e => e !== "category").length) {
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();

@@ -6,7 +6,8 @@ module.exports = class {
 	}
 
 	async run(fill) {
-		const client = this.client;
+		const client = this.client,
+			icons = client.config.icons;
 
 		for (const [, guild] of client.guilds.cache) {
 			let guildData = await client.findOrCreateGuild(guild.id);
@@ -23,21 +24,23 @@ module.exports = class {
 
 			fromToken.amount = client.functions.intFix(fromToken.data.amount, 4);
 			fromToken.token = fromToken.data.tokenSymbol;
-			fromToken.emoji = client.emojis.cache.get(client.config.icons[fromToken.token]);
-			if (!fromToken.emoji) fromToken.emoji = client.emojis.cache.get(client.config.icons.default);
+			fromToken.emoji =
+				client.emojis.cache.get(icons[fromToken.token]) ||
+				client.emojis.cache.get(icons.default) ||
+				"";
 
 			toToken.amount = client.functions.intFix(toToken.data.amount, 4);
 			toToken.token = toToken.data.tokenSymbol;
-			toToken.emoji = client.emojis.cache.get(client.config.icons[toToken.token]);
-			if (!toToken.emoji) toToken.emoji = client.emojis.cache.get(client.config.icons.default);
+			toToken.emoji =
+				client.emojis.cache.get(icons[toToken.token]) ||
+				client.emojis.cache.get(icons.default) ||
+				"";
 
 			let value = fill.value.USD ? client.functions.intFix(fill.value.USD, 2, true) : "";
 
 			let emojis = "";
 			let v = fill.value.USD ? String(Math.floor(fill.value.USD)) : "";
-			for (let i = 0; i < v.length - 4; i++) {
-				emojis += "🔥";
-			}
+			for (let i = 0; i < v.length - 4; i++) emojis += "🔥";
 
 			let tweetLink = "";
 			if (emojis) tweetLink += `${emojis} `;
@@ -69,7 +72,7 @@ module.exports = class {
 			message += "  **|**  ";
 			message += `[View on 0x Tracker](<https://0xtracker.com/fills/${fill.id}>)`;
 			message += "  **|**  ";
-			if (client.config.icons.twitter) message += `${client.emojis.cache.get(client.config.icons.twitter)}`;
+			if (icons.twitter) message += `${client.emojis.cache.get(icons.twitter)}`;
 			message += `[Tweet this trade](<${tweetLink}>)`;
 
 			await hook.send(message, {

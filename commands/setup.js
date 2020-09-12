@@ -13,7 +13,7 @@ class Setup extends Command {
 			guildOnly: true,
 			global: false,
 			aliases: [],
-			memberPermissions: ["ADMINISTRATOR"],
+			memberPermissions: ["MANAGE_GUILD"],
 			botPermissions: ["SEND_MESSAGES", "MANAGE_CHANNELS", "MANAGE_ROLES"],
 			nsfw: false,
 			ownerOnly: false,
@@ -75,15 +75,6 @@ class Setup extends Command {
 			data.guild.stats.volume.category = c.id;
 		}
 
-		if (!guild.channels.cache.has(data.guild.stats.volume.fills)) {
-			let c = await guild.channels.create("trades", {
-				type: "text",
-				permissionOverwrites
-			});
-			await c.setParent(data.guild.stats.volume.category);
-			data.guild.stats.volume.fills = c.id;
-		}
-
 		if (!guild.channels.cache.has(data.guild.stats.volume.totals)) {
 			let c = await guild.channels.create(`Totals: Loading...`, {
 				type: "voice",
@@ -91,6 +82,14 @@ class Setup extends Command {
 			});
 			await c.setParent(data.guild.stats.volume.category);
 			data.guild.stats.volume.totals = c.id;
+		}
+
+		if (!guild.channels.cache.has(data.guild.stats.trades)) {
+			let c = await guild.channels.create("trades", {
+				type: "text",
+				permissionOverwrites
+			});
+			data.guild.stats.trades = c.id;
 		}
 
 		await data.guild.save();

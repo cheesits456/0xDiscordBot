@@ -9,7 +9,13 @@ class Client extends Discord.Client {
 	constructor(options) {
 		super(options);
 		this.config = require("../config");
-		this.config.icons = require("./Icons");
+		this.config.emojis = {
+			success: "✅",
+			warn: "⚠️",
+			error: "❌",
+			loading: "💬"
+		};
+		this.config.icons = this.config.feedIcons ? require("./Icons") : {};
 		this.commands = new Collection();
 		this.aliases = new Collection();
 		this.logger = require("../helpers/logger");
