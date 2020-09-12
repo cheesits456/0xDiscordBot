@@ -83,6 +83,8 @@ npm install
 
 **Location:** `./config.js`
 
+<p align="justify">The main configuration file</p>
+
 | Parameter | Type                                   | Description                                                                                          |
 |:----------|:---------------------------------------|:-----------------------------------------------------------------------------------------------------|
 | feedIcons | Boolean                                | Whether or not to use token icon emojis in transaction feed channel (see also: [Icons.js](#iconsjs)) |
@@ -118,11 +120,11 @@ module.exports = {
 
 **Location:** `./base/Icons.js`
 
-| Parameter               | Type    | Description                                                           |
-|:------------------------|:--------|:----------------------------------------------------------------------|
-| default                 | EmojiID | The icon used for tokens that don't have an icon defined in this file |
-| twitter                 | EmojiID | The icon to display beside the Twitter link                           |
-| [TokenType](#tokentype) | EmojiID | The icon to use for the specified token                               |
+| Parameter                     | Type    | Description                                                           |
+|:------------------------------|:--------|:----------------------------------------------------------------------|
+| default                       | EmojiID | The icon used for tokens that don't have an icon defined in this file |
+| twitter                       | EmojiID | The icon to display beside the Twitter link                           |
+| TokenType (see example below) | EmojiID | The icon to use for the specified token                               |
 
 <details><summary>Sample <code>Icons.js</code></summary>
 
