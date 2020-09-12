@@ -87,8 +87,6 @@ npm install
 
 **Location:** `./config.js`
 
-<p align="justify">The main configuration file</p>
-
 | Parameter | Type                                   | Description                                                                                          |
 |:----------|:---------------------------------------|:-----------------------------------------------------------------------------------------------------|
 | feedIcons | Boolean                                | Whether or not to use token icon emojis in transaction feed channel (see also: [Icons.js](#iconsjs)) |
