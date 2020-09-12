@@ -204,7 +204,8 @@ module.exports = {
 
 <details><summary>Examples</summary>
 
-![Watching Status Example][UserStatus1]
+<img src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus1.png" align="left">
+
 ```js
 {
 	name: "{trades} trades (24h)",
