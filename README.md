@@ -80,7 +80,7 @@ npm install
 ### config.js
 
 | Parameter | Type                                   | Description                                                                                        |
-|:--------- |:-------------------------------------- |:-------------------------------------------------------------------------------------------------- |
+|:----------|:---------------------------------------|:---------------------------------------------------------------------------------------------------|
 | feedIcons | Boolean                                | Whether or not to use token icon emojis in transaction feed channel                                |
 | owners    | Array&lt;UserID&gt;                    | Users who are allowed to use the restart command                                                   |
 | prefix    | String                                 | The default prefix for the bot                                                                     |
@@ -88,7 +88,7 @@ npm install
 | token     | String                                 | The token of your Discord Bot                                                                      |
 
 <details><summary>Sample <code>config.js</code></summary>
-	
+
 ```js
 module.exports = {
 	feedIcons: true,
@@ -114,7 +114,30 @@ module.exports = {
 
 ### UserStatus
 
-<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan, lectus ac semper pretium, nibh dui facilisis augue, ut tincidunt lorem nisi a sem. Mauris fermentum turpis eget dolor accumsan, et vulputate nibh pretium. Morbi facilisis justo risus, nec blandit turpis malesuada ac.</p>
+**Type:** Object
+
+| Parameter | Type                          | Description                                                                     |
+|:----------|:------------------------------|:--------------------------------------------------------------------------------|
+| name      | String                        | The name of the activity, with support for a couple variable values (see below) |
+| type      | [ActivityType](#activitytype) | The type of activity                                                            |
+
+#### Variable Values
+
+| String    | Replaced With                                         |
+|:----------|:------------------------------------------------------|
+| {traders} | The number of active traders within the last 24 hours |
+| {trades}  | The number of trades made withing the last 24 hours   |
+
+<details><summary>Sample <code>UserStatus</code></summary>
+
+```js
+{
+	name: "{trades} trades (24h)",
+	type: "WATCHING"
+}
+```
+
+</details
 
 # Usage
 
