@@ -253,7 +253,9 @@ Any one of the following values:
 ./start.sh
 ```
 
-To kill the bot's main process, Press <kbd>CTRL</kbd> + <kbd>C</kbd> in its terminal window.
+<p align="justify">To kill the bot's main process, Press <kbd>CTRL</kbd> + <kbd>C</kbd> in its terminal window.</p>
+
+<p align="justify">Once the bot is connected to discord, an invite link will be logged to the console. The invite link can be used to invite the bot to a new server, and has all the necessary permission flags set</p>
 
 ## Commands
 
