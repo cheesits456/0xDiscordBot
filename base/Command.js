@@ -5,23 +5,15 @@ module.exports = class Command {
 		client,
 		{
 			name = null,
-			description = "No description provided",
-			usage = "No usage provided",
-			examples = null,
-			dirname = false,
-			enabled = true,
 			guildOnly = false,
 			aliases = new Array(),
 			botPermissions = new Array(),
 			memberPermissions = new Array(),
-			nsfw = false,
 			ownerOnly = false,
 			cooldown = 3000
 		}
 	) {
-		let category = dirname ? dirname.split(path.sep)[parseInt(dirname.split(path.sep).length - 1, 10)] : "Other";
 		this.client = client;
-		this.conf = { enabled, guildOnly, aliases, memberPermissions, botPermissions, nsfw, ownerOnly, cooldown };
-		this.help = { name, description, category, usage, examples };
+		this.conf = { guildOnly, aliases, memberPermissions, botPermissions, ownerOnly, cooldown };
 	}
 };

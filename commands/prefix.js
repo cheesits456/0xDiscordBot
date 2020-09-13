@@ -5,15 +5,10 @@ class Prefix extends Command {
 	constructor(client) {
 		super(client, {
 			name: "prefix",
-			description: "change the bot's prefix for your server",
-			usage: "{prefix}prefix <prefix>",
-			dirname: __dirname,
-			enabled: true,
 			guildOnly: true,
 			aliases: [],
 			memberPermissions: ["MANAGE_GUILD"],
 			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
-			nsfw: false,
 			ownerOnly: false,
 			cooldown: 3000
 		});

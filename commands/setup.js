@@ -5,17 +5,10 @@ class Setup extends Command {
 	constructor(client) {
 		super(client, {
 			name: "setup",
-			description:
-				"create a category of viewable but non-joinable voice channels who's names update as things on the server change",
-			usage: "{prefix}setup",
-			dirname: __dirname,
-			enabled: true,
 			guildOnly: true,
-			global: false,
 			aliases: [],
 			memberPermissions: ["MANAGE_GUILD"],
 			botPermissions: ["SEND_MESSAGES", "MANAGE_CHANNELS", "MANAGE_ROLES"],
-			nsfw: false,
 			ownerOnly: true,
 			cooldown: 3000
 		});

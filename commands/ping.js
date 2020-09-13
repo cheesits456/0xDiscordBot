@@ -5,16 +5,10 @@ class Ping extends Command {
 	constructor(client) {
 		super(client, {
 			name: "ping",
-			description: `view the bot's current network connection speed and processing latency`,
-			usage: "{prefix}ping",
-			dirname: __dirname,
-			enabled: true,
 			guildOnly: false,
-			global: false,
-			aliases: ["pong", "latency"],
+			aliases: ["pong"],
 			memberPermissions: [],
 			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
-			nsfw: false,
 			ownerOnly: false,
 			cooldown: 3000
 		});

@@ -6,16 +6,10 @@ class Restart extends Command {
 	constructor(client) {
 		super(client, {
 			name: "restart",
-			description: "shut down all shards and restart the main process",
-			usage: "{prefix}restart",
-			dirname: __dirname,
-			enabled: true,
 			guildOnly: false,
-			global: true,
 			aliases: [],
 			memberPermissions: [],
 			botPermissions: [],
-			nsfw: false,
 			ownerOnly: true,
 			cooldown: 3000
 		});

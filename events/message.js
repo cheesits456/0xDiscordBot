@@ -35,7 +35,7 @@ module.exports = class {
 		if (cmd.conf.ownerOnly && !client.config.owners.includes(msg.author.id)) return;
 
 		if (cmd.conf.guildOnly && !msg.guild)
-			return msg.channel.send(`${e.error} | This command is only available on a server!`).catch(() => {});
+			return msg.channel.send(`${e.error} | This command can only be used from a server!`).catch(() => {});
 
 		if (msg.guild) {
 			let neededPermission = [];
@@ -44,9 +44,10 @@ module.exports = class {
 			}
 			if (neededPermission.length)
 				return msg.channel.send(
-					`${e.error} | I need the following permissions to perform this command: \`${neededPermission
-						.map(p => `\`${p}\``)
-						.join(", ")}\``
+					e.error +
+					" | I need the following permissions to perform this command: `" +
+					neededPermission.map(p => `\`${p}\``).join(", ") +
+					"`"
 				);
 
 			neededPermission = [];
@@ -55,23 +56,11 @@ module.exports = class {
 			}
 			if (neededPermission.length)
 				return msg.channel.send(
-					`${
-						e.error
-					} | You do not have the necessary permissions to perform this command (\`${neededPermission
-						.map(p => `\`${p}\``)
-						.join(", ")}\`)`
+					e.error +
+					" | You do not have the necessary permissions to perform this command: `" +
+					neededPermission.map(p => `\`${p}\``).join(", ") +
+					"`"
 				);
-
-			if (data.guild.ignoredChannels?.includes(msg.channel.id))
-				return (
-					msg.delete() &&
-					msg.author.send(`${e.error} | Commands are disabled in ${msg.channel}`).catch(() => {})
-				);
-
-			if (!msg.channel.nsfw && cmd.conf.nsfw)
-				return msg.channel
-					.send(`${e.error} | This command can only be executed in NSFW channels!`)
-					.catch(() => {});
 		}
 
 		let uCooldown = cmdCooldown[msg.author.id];
@@ -101,7 +90,7 @@ module.exports = class {
 			await cmd.run(msg, args, data);
 		} catch (e) {
 			client.logger.error(e);
-			return msg.channel.send(`${client.config.emojis.error} | An error has occurred, please try again later.`);
+			return msg.channel.send(`${client.config.emojis.error} | An unexpedted error has occurred`);
 		}
 	}
 };

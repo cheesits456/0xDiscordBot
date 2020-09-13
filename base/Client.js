@@ -38,29 +38,21 @@ class Client extends Discord.Client {
 		}
 	}
 
-	// This function is used to unload a command
-	async unloadCommand(commandPath, commandName) {
-		let command;
-		if (this.commands.has(commandName)) command = this.commands.get(commandName);
-		else if (this.aliases.has(commandName)) command = this.commands.get(this.aliases.get(commandName));
-		if (!command) return this.logger.warn(`\`${commandName}\` is not a valid command or alias`);
-		// if the command has a "shutdown" script it needs to run before being unloaded
-		if (command.shutdown) await command.shutdown(this);
-		delete require.cache[require.resolve(`.${commandPath}${path.sep}${commandName}.js`)];
-		return;
-	}
-
 	// This function is used to find guild data or create it
 	async findOrCreateGuild(guild) {
-		let path = `./guilds/${guild}.json`;
-		if (!fs.existsSync(path)) path = "./base/Guild.json";
-		let data = JSON.parse(await fs.promises.readFile(path, "utf8"));
-		if (!data.id) data.id = guild;
-		data.save = async function () {
-			await fs.promises.writeFile(`./guilds/${this.id}.json`, JSON.stringify(this, null, "\t"), "utf8");
-		};
-		if (path === "./base/Guild.json") await data.save();
-		return data;
+		try {
+			let path = `./guilds/${guild}.json`;
+			if (!fs.existsSync(path)) path = "./base/Guild.json";
+			let data = JSON.parse(await fs.promises.readFile(path, "utf8"));
+			if (!data.id) data.id = guild;
+			data.save = async function () {
+				await fs.promises.writeFile(`./guilds/${this.id}.json`, JSON.stringify(this, null, "\t"), "utf8");
+			};
+			if (path === "./base/Guild.json") await data.save();
+			return data;
+		} catch (e) {
+			this.logger.error(e);
+		}
 	}
 }
 

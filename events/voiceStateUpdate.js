@@ -1,3 +1,6 @@
+// Automatically disconnect users from the live stat voice channels
+// (the permission that stops users from joining doesn't apply to server administrators)
+
 module.exports = class {
 	constructor(client) {
 		this.client = client;
@@ -6,11 +9,12 @@ module.exports = class {
 	async run(oldState, newState) {
 		if (oldState.channel && !newState.channel) return;
 		const data = await this.client.findOrCreateGuild(newState.guild.id);
-		if (
-			Object.values(data.stats.staking).includes(newState.channelID) ||
-			Object.values(data.stats.volume).includes(newState.channelID)
-		) {
-			newState.kick();
+
+		let isStatChannel = false;
+		for (const config of ["staking", "volume"]) {
+			if (Object.values(data.stats[config]).includes(newState.channelID)) isStatChannel = true;
 		}
+
+		if (isStatChannel) newState.kick();
 	}
 };
