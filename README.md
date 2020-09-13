@@ -261,19 +261,23 @@ Any one of the following values:
 
 ### Ping
 
-
+A basic command to check the bot's websocket and processing latency
 
 ### Prefix
 
-
+Used to change the command prefix for the server the command is issued in
 
 ### Restart
 
+Use this command to shut down and restart the bot
 
+> This command can only be executed by users set as "owner" in [config.js](#configjs)
 
 ### Setup
 
+Use this command to create the stat channels and network transaction feed
 
+> This command can only be executed by users set as "owner" in [config.js](#configjs)
 
 <hr>
 
