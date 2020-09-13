@@ -30,8 +30,8 @@ class Client extends Discord.Client {
 			const props = new (require(`.${commandPath}${path.sep}${commandName}`))(this);
 			props.conf.location = commandPath;
 			if (props.init) props.init(this);
-			this.commands.set(props.help.name, props);
-			props.conf.aliases.forEach(alias => this.aliases.set(alias, props.help.name));
+			this.commands.set(props.conf.name, props);
+			props.conf.aliases.forEach(alias => this.aliases.set(alias, props.conf.name));
 			return;
 		} catch (e) {
 			this.logger.error(e);

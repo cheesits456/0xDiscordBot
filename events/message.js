@@ -68,7 +68,7 @@ module.exports = class {
 			cmdCooldown[msg.author.id] = {};
 			uCooldown = cmdCooldown[msg.author.id];
 		}
-		let time = uCooldown[cmd.help.name] || 0;
+		let time = uCooldown[cmd.conf.name] || 0;
 		if (time && time > Date.now())
 			return msg.channel
 				.send(
@@ -77,10 +77,10 @@ module.exports = class {
 					)}** second(s) to be able to run this command again!`
 				)
 				.catch(() => {});
-		cmdCooldown[msg.author.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
+		cmdCooldown[msg.author.id][cmd.conf.name] = Date.now() + cmd.conf.cooldown;
 
 		client.logger.cmd(
-			`${client.functions.capitalize(cmd.help.name)} Command Executed\n` +
+			`${client.functions.capitalize(cmd.conf.name)} Command Executed\n` +
 				`\t${msg.author.id}\t${msg.author.tag}\n` +
 				`\t${msg.channel.id}\t${msg.guild ? `#${msg.channel.name}` : "DM Channel"}` +
 				`${msg.guild ? `\n\t${msg.guild.id}\t${msg.guild.name}` : ""}`

@@ -14,6 +14,6 @@ module.exports = class Command {
 		}
 	) {
 		this.client = client;
-		this.conf = { guildOnly, aliases, memberPermissions, botPermissions, ownerOnly, cooldown };
+		this.conf = { name, guildOnly, aliases, memberPermissions, botPermissions, ownerOnly, cooldown };
 	}
 };
