@@ -72,7 +72,7 @@ module.exports = class {
 			message += "  **|**  ";
 			message += `[View on 0x Tracker](<https://0xtracker.com/fills/${fill.id}>)`;
 			message += "  **|**  ";
-			if (icons.twitter) message += `${client.emojis.cache.get(icons.twitter)}`;
+			if (icons?.twitter) message += `${client.emojis.cache.get(icons.twitter)}`;
 			message += `[Tweet this trade](<${tweetLink}>)`;
 
 			await hook.send(message, {
