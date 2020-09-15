@@ -1,13 +1,22 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js"),
+	fetch = require("node-fetch");
 
 module.exports = class {
 	constructor(client) {
 		this.client = client;
 	}
 
-	async run(fill) {
+	async run(fillData) {
 		const client = this.client,
 			icons = client.config.icons;
+
+		let fill = await (await fetch(`https://api.0xtracker.com/fills/${fillData.id}`)).json();
+		fill.retries = fillData.retries;
+
+		if (!fill.value.USD && fill.retries < 20) {
+			fill.retries++;
+			return client.setTimeout(() => client.emit("trackerFill", fill), 15000);
+		}
 
 		for (const [, guild] of client.guilds.cache) {
 			let guildData = await client.findOrCreateGuild(guild.id);

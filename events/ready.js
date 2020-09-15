@@ -54,7 +54,8 @@ module.exports = class {
 			const fills = await (await fetch("https://api.0xtracker.com/fills")).json();
 			if (fills.total === client._fills) return;
 			for (let i = fills.total - client._fills - 1; i >= 0; i--) {
-				client.setTimeout(() => client.emit("trackerFill", fills.fills[i]), 60000);
+				fills.fills[i].retries = 0;
+				client.emit("trackerFill", fills.fills[i]);
 			}
 			client._fills = fills.total;
 		}, 1000 * 60);
