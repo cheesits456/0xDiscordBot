@@ -24,23 +24,23 @@ module.exports = class {
 
 			fromToken.amount = client.functions.intFix(fromToken.data.amount, 4);
 			fromToken.token = fromToken.data.tokenSymbol;
-			fromToken.emoji =
-				client.emojis.cache.get(icons[fromToken.token]) ||
-				client.emojis.cache.get(icons.default) ||
-				"";
+			fromToken.emoji = client.config.feedIcons
+				? client.emojis.cache.get(icons[fromToken.token]) || client.emojis.cache.get(icons.default) || ""
+				: "";
 
 			toToken.amount = client.functions.intFix(toToken.data.amount, 4);
 			toToken.token = toToken.data.tokenSymbol;
-			toToken.emoji =
-				client.emojis.cache.get(icons[toToken.token]) ||
-				client.emojis.cache.get(icons.default) ||
-				"";
+			toToken.emoji = client.config.feedIcons
+				? client.emojis.cache.get(icons[toToken.token]) || client.emojis.cache.get(icons.default) || ""
+				: "";
 
 			let value = fill.value.USD ? client.functions.intFix(fill.value.USD, 2, true) : "";
 
 			let emojis = "";
-			let v = fill.value.USD ? String(Math.floor(fill.value.USD)) : "";
-			for (let i = 0; i < v.length - 4; i++) emojis += "🔥";
+			if (client.config.feedIcons) {
+				let v = fill.value.USD ? String(Math.floor(fill.value.USD)) : "";
+				for (let i = 0; i < v.length - 4; i++) emojis += "🔥";
+			}
 
 			let tweetLink = "";
 			if (emojis) tweetLink += `${emojis} `;
