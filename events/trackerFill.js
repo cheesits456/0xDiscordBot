@@ -14,9 +14,22 @@ module.exports = class {
 		fill.retries = fillData.retries;
 
 		if (!fill.value.USD && fill.retries < 5) {
+			if (client.debug === "fills")
+				client.logger.debug(
+					`${fill.retries}\t${client.functions.intFix(fill.assets[0].amount, 4)} ${
+						fill.assets[0].tokenSymbol
+					}\t${client.functions.intFix(fill.assets[1].amount, 4)} ${fill.assets[1].tokenSymbol}`
+				);
 			fill.retries++;
 			return client.setTimeout(() => client.emit("trackerFill", fill), 60000);
 		}
+
+		if (client.debug === "fills")
+			client.logger.ready(
+				`${fill.retries}\t${client.functions.intFix(fill.assets[0].amount, 4)} ${
+					fill.assets[0].tokenSymbol
+				}\t${client.functions.intFix(fill.assets[1].amount, 4)} ${fill.assets[1].tokenSymbol}`
+			);
 
 		for (const [, guild] of client.guilds.cache) {
 			let guildData = await client.findOrCreateGuild(guild.id);
