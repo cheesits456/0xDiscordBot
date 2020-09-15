@@ -15,7 +15,7 @@ class Client extends Discord.Client {
 			error: "❌",
 			loading: "💬"
 		};
-		this.config.icons = this.config.feedIcons ? require("./Icons") : {};
+		if (this.config.feedIcons) this.config.icons = require("./Icons");
 		this.commands = new Collection();
 		this.aliases = new Collection();
 		this.logger = require("../helpers/logger");
