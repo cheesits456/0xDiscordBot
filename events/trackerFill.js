@@ -13,9 +13,9 @@ module.exports = class {
 		let fill = await (await fetch(`https://api.0xtracker.com/fills/${fillData.id}`)).json();
 		fill.retries = fillData.retries;
 
-		if (!fill.value.USD && fill.retries < 20) {
+		if (!fill.value.USD && fill.retries < 5) {
 			fill.retries++;
-			return client.setTimeout(() => client.emit("trackerFill", fill), 15000);
+			return client.setTimeout(() => client.emit("trackerFill", fill), 60000);
 		}
 
 		for (const [, guild] of client.guilds.cache) {
