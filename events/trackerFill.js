@@ -37,9 +37,12 @@ module.exports = class {
 			let value = fill.value.USD ? client.functions.intFix(fill.value.USD, 2, true) : "";
 
 			let emojis = "";
-			if (client.config.feedIcons) {
-				let v = fill.value.USD ? String(Math.floor(fill.value.USD)) : "";
-				for (let i = 0; i < v.length - 4; i++) emojis += "🔥";
+			if (fill.value.USD && client.config.feedIcons) {
+				for (const [amount, emoji] of Object.entries(require("../base/AmountEmojis"))) {
+					if (!isNaN(Number(amount))) {
+						if (fill.value.USD >= Number(amount)) emojis = emoji;
+					}
+				}
 			}
 
 			let tweetLink = "";
