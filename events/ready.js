@@ -73,7 +73,7 @@ module.exports = class {
 			let m = await client.channels.cache.get(restartMessage.channel)?.messages.fetch(restartMessage.message);
 			if (m) {
 				m.edit(
-					`${client.config.emojis.success} | Restarted in \`${client.functions.msFix(
+					`${client.config.emojis.success} | ${restartMessage.onComplete} in \`${client.functions.msFix(
 						Date.now() - m.createdTimestamp
 					)}\``
 				);
