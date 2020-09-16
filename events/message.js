@@ -90,7 +90,7 @@ module.exports = class {
 			await cmd.run(msg, args, data);
 		} catch (e) {
 			client.logger.error(e);
-			return msg.channel.send(`${client.config.emojis.error} | An unexpedted error has occurred`);
+			return msg.channel.send(`${client.config.emojis.error} | An unexpected error has occurred`);
 		}
 	}
 };
