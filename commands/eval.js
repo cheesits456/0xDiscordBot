@@ -10,7 +10,7 @@ class Eval extends Command {
 			memberPermissions: [],
 			botPermissions: ["SEND_MESSAGES"],
 			ownerOnly: true,
-			cooldown: 3000
+			cooldown: 0
 		});
 	}
 
