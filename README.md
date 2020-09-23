@@ -297,7 +297,7 @@ This project is licensed under [AGPL-3.0][license]
 
 [banner-img]:		https://github.com/cheesits456/0xDiscordBot/raw/readme-images/banner.png
 [email-img]:		https://img.shields.io/badge/-E--Mail-e722e7?style=for-the-badge
-[transaction-img]:	https://github.com/cheesits456/0xDiscordBot/raw/readme-images/transaction.png
+[transaction-img]:	https://github.com/cheesits456/0xDiscordBot/raw/readme-images/transaction_1.png
 [website-img]:		https://img.shields.io/badge/-Website-e722e7?style=for-the-badge
 [UserStatus1]:      https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus1.png
 [UserStatus2]:      https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus2.png
