@@ -67,6 +67,9 @@ module.exports = class {
 				}
 			}
 
+			let embed = new Discord.MessageEmbed()
+				.setTitle(new Date(fill.date).toUTCString());
+
 			let tweetLink = "";
 			if (emojis) tweetLink += `${emojis} `;
 			tweetLink += `${fromToken.amount} $${fromToken.token}`;
@@ -78,12 +81,6 @@ module.exports = class {
 			tweetLink += `\nView: 0xtracker.com/fills/${fill.id}`;
 			tweetLink += "\n\n#0xDiscordBot";
 			tweetLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetLink)}`;
-
-			const hook =
-				(await channel.fetchWebhooks()).first() ||
-				(await channel.createWebhook(client.user.username, {
-					avatar: client.user.displayAvatarURL({ format: "png" })
-				}));
 
 			let message = "";
 			if (fromToken.emoji) message += `${fromToken.emoji} `;
@@ -100,10 +97,9 @@ module.exports = class {
 			if (icons?.twitter) message += `${client.emojis.cache.get(icons.twitter)}`;
 			message += `[Tweet this trade](<${tweetLink}>)`;
 
-			await hook.send(message, {
-				username: new Date(fill.date).toUTCString(),
-				avatarURL: client.user.displayAvatarURL({ format: "png" })
-			});
+			embed.setDescription(message);
+
+			await channel.send(embed);
 		}
 	}
 };
