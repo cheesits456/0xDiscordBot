@@ -55,8 +55,10 @@ module.exports = class {
 			if (fills.total < client._fills) client._fills = fills.total;
 			if (fills.total === client._fills) return;
 			for (let i = fills.total - client._fills - 1; i >= 0; i--) {
-				fills.fills[i].retries = 0;
-				client.emit("trackerFill", fills.fills[i]);
+				if (fills.fills[i]) {
+					fills.fills[i].retries = 0;
+					client.emit("trackerFill", fills.fills[i]);
+				}
 			}
 			client._fills = fills.total;
 		}, 1000 * 60);
