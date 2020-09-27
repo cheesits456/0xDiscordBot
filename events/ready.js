@@ -52,9 +52,13 @@ module.exports = class {
 		// trackerFill event-emitter API
 		client.setInterval(async () => {
 			const fills = await (await fetch("https://api.0xtracker.com/fills")).json();
+			if (fills.total < client._fills) client._fills = fills.total;
 			if (fills.total === client._fills) return;
 			for (let i = fills.total - client._fills - 1; i >= 0; i--) {
-				await client.emit("trackerFill", fills.fills[i]);
+				if (fills.fills[i]) {
+					fills.fills[i].retries = 0;
+					client.emit("trackerFill", fills.fills[i]);
+				}
 			}
 			client._fills = fills.total;
 		}, 1000 * 60);
@@ -72,7 +76,7 @@ module.exports = class {
 			let m = await client.channels.cache.get(restartMessage.channel)?.messages.fetch(restartMessage.message);
 			if (m) {
 				m.edit(
-					`${client.config.emojis.success} | Restarted in \`${client.functions.msFix(
+					`${client.config.emojis.success} | ${restartMessage.onComplete} in \`${client.functions.msFix(
 						Date.now() - m.createdTimestamp
 					)}\``
 				);

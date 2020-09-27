@@ -1,13 +1,42 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js"),
+	fetch = require("node-fetch");
 
 module.exports = class {
 	constructor(client) {
 		this.client = client;
 	}
 
-	async run(fill) {
+	async run(fillData) {
 		const client = this.client,
 			icons = client.config.icons;
+
+		let fill = await (await fetch(`https://api.0xtracker.com/fills/${fillData.id}`)).json();
+		fill.retries = fillData.retries;
+
+		if (!fill.value.USD && fill.retries < 5) {
+			if (client.debug === "fills")
+				client.logger.debug(
+					`${fill.retries}\t${client.functions.intFix(fill.assets[0].amount, 4)} ${
+						fill.assets[0].tokenSymbol
+					}\t${client.functions.intFix(fill.assets[1].amount, 4)} ${fill.assets[1].tokenSymbol}`
+				);
+			fill.retries++;
+			return client.setTimeout(() => client.emit("trackerFill", fill), 60000);
+		}
+
+		let ignore = true;
+		for (const amount of Object.keys(require("../base/AmountEmojis"))) {
+			if (!ignore) continue;
+			if (!isNaN(Number(amount)) && fill.value.USD >= Number(amount)) ignore = false;
+		}
+		if (ignore) return;
+
+		if (client.debug === "fills")
+			client.logger.ready(
+				`${fill.retries}\t${client.functions.intFix(fill.assets[0].amount, 4)} ${
+					fill.assets[0].tokenSymbol
+				}\t${client.functions.intFix(fill.assets[1].amount, 4)} ${fill.assets[1].tokenSymbol}`
+			);
 
 		for (const [, guild] of client.guilds.cache) {
 			let guildData = await client.findOrCreateGuild(guild.id);
@@ -24,23 +53,29 @@ module.exports = class {
 
 			fromToken.amount = client.functions.intFix(fromToken.data.amount, 4);
 			fromToken.token = fromToken.data.tokenSymbol;
-			fromToken.emoji =
-				client.emojis.cache.get(icons[fromToken.token]) ||
-				client.emojis.cache.get(icons.default) ||
-				"";
+			fromToken.emoji = client.config.feedIcons
+				? client.emojis.cache.get(icons[fromToken.token]) || client.emojis.cache.get(icons.default) || ""
+				: "";
 
 			toToken.amount = client.functions.intFix(toToken.data.amount, 4);
 			toToken.token = toToken.data.tokenSymbol;
-			toToken.emoji =
-				client.emojis.cache.get(icons[toToken.token]) ||
-				client.emojis.cache.get(icons.default) ||
-				"";
+			toToken.emoji = client.config.feedIcons
+				? client.emojis.cache.get(icons[toToken.token]) || client.emojis.cache.get(icons.default) || ""
+				: "";
 
 			let value = fill.value.USD ? client.functions.intFix(fill.value.USD, 2, true) : "";
 
 			let emojis = "";
-			let v = fill.value.USD ? String(Math.floor(fill.value.USD)) : "";
-			for (let i = 0; i < v.length - 4; i++) emojis += "🔥";
+			if (fill.value.USD && client.config.feedIcons) {
+				for (const [amount, emoji] of Object.entries(require("../base/AmountEmojis"))) {
+					if (!isNaN(Number(amount))) {
+						if (fill.value.USD >= Number(amount)) emojis = emoji;
+					}
+				}
+			}
+
+			let embed = new Discord.MessageEmbed()
+				.setTitle(new Date(fill.date).toUTCString());
 
 			let tweetLink = "";
 			if (emojis) tweetLink += `${emojis} `;
@@ -54,12 +89,6 @@ module.exports = class {
 			tweetLink += "\n\n#0xDiscordBot";
 			tweetLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetLink)}`;
 
-			const hook =
-				(await channel.fetchWebhooks()).first() ||
-				(await channel.createWebhook(client.user.username, {
-					avatar: client.user.displayAvatarURL({ format: "png" })
-				}));
-
 			let message = "";
 			if (fromToken.emoji) message += `${fromToken.emoji} `;
 			message += `**${fromToken.amount}** \`${fromToken.token}\``;
@@ -72,13 +101,12 @@ module.exports = class {
 			message += "  **|**  ";
 			message += `[View on 0x Tracker](<https://0xtracker.com/fills/${fill.id}>)`;
 			message += "  **|**  ";
-			if (icons.twitter) message += `${client.emojis.cache.get(icons.twitter)}`;
+			if (icons?.twitter) message += `${client.emojis.cache.get(icons.twitter)}`;
 			message += `[Tweet this trade](<${tweetLink}>)`;
 
-			await hook.send(message, {
-				username: new Date(fill.date).toUTCString(),
-				avatarURL: client.user.displayAvatarURL({ format: "png" })
-			});
+			embed.setDescription(message);
+
+			await channel.send(embed);
 		}
 	}
 };

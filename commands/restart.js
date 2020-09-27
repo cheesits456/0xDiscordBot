@@ -1,6 +1,5 @@
 const Command = require("../base/Command.js"),
-	write = require("fs").writeFileSync,
-	Discord = require("discord.js");
+	fs = require("fs");
 
 class Restart extends Command {
 	constructor(client) {
@@ -23,7 +22,11 @@ class Restart extends Command {
 		let m = await msg.channel.send(`${l} | **Shutting Down . . .**`);
 		await msg.client.user.setActivity("Restarting . . .");
 		await m.edit(`${l} | **Restarting . . .**`);
-		write("./restartMessage.json", JSON.stringify({ channel: m.channel.id, message: m.id }), "utf8");
+		await fs.promises.writeFile(
+			"./restartMessage.json",
+			JSON.stringify({ channel: m.channel.id, message: m.id, onComplete: "Restarted" }),
+			"utf8"
+		);
 		process.exit();
 	}
 }
