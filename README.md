@@ -13,18 +13,22 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
   - [Installation](#installation)
 - [Configuration](#configuration)
   - [Config Files](#config-files)
-    - [config.js](#configjs)
+    - [config.json](#configjson)
 	- [Icons.js](#iconsjs)
+	- [AmountEmojis.json](#amountemojisjson)
   - [Config Options](#config-options)
     - [UserStatus](#userstatus)
 	- [ActivityType](#activitytype)
 - [Usage](#usage)
   - [Running the Bot](#running-the-bot)
   - [Commands](#commands)
+    - [Bash](#bash)
+    - [Eval](#eval)
     - [Ping](#ping)
 	- [Prefix](#prefix)
 	- [Restart](#restart)
 	- [Setup](#setup)
+	- [Update](#update)
 - [Author](#author)
 - [License](#license)
 
@@ -87,9 +91,9 @@ npm install
 
 ## Config Files
 
-### config.js
+### config.json
 
-**Location:** `./config.js`
+**Location:** `./config.json`
 
 | Parameter | Type                                   | Description                                                                                          |
 |:----------|:---------------------------------------|:-----------------------------------------------------------------------------------------------------|
@@ -99,24 +103,24 @@ npm install
 | statuses  | Array&lt;[UserStatus](#userstatus)&gt; | Bot statuses to show in member list<br>• minimum of 1<br>• no maximum<br>• cycles every 15 seconds   |
 | token     | String                                 | The token of your Discord Bot                                                                        |
 
-<details><summary>Sample <code>config.js</code></summary>
+<details><summary>Sample <code>config.json</code></summary>
 
-```js
-module.exports = {
-	feedIcons: true,
-	owners: [
+```json
+{
+	"feedIcons": true,
+	"owners": [
 		"306018440639152128",
 		"517534579335233579"
 	],
-	prefix: "!",
-	statuses: [{
-		name: "{trades} trades (24h)",
-		type: "WATCHING"
+	"prefix": "!",
+	"statuses": [{
+		"name": "{trades} trades (24h)",
+		"type": "WATCHING"
 	}, {
-		name: "{traders} traders (24h)",
-		type: "WATCHING"
+		"name": "{traders} traders (24h)",
+		"type": "WATCHING"
 	}],
-	token: "T0K3N"
+	"token": "T0K3N"
 };
 ```
 
@@ -128,7 +132,7 @@ module.exports = {
 
 <p align="justify"><i>This file's default values will work fine for the official 0x Discord Bot. The documentation for this file is here for other people looking to host their own instance of the bot</i></p>
 
-<p align="justify">This file defines which emojis the bot should use for different tokens in the transaction feed channel. If the <code>feedIcons</code> option in <a href="#configjs">config.js</a> is set to <code>false</code>, this file is ignored. If you're someone looking to host your own separate instance of this bot, the default values set in this file won't work for you - you'll need to change the IDs to ones for emojis your bot has access to (bots can only use emojis from servers they're in).</p>
+<p align="justify">This file defines which emojis the bot should use for different tokens in the transaction feed channel. If the <code>feedIcons</code> option in <a href="#configjson">config.json</a> is set to <code>false</code>, this file is ignored. If you're someone looking to host your own separate instance of this bot, the default values set in this file won't work for you - you'll need to change the IDs to ones for emojis your bot has access to (bots can only use emojis from servers they're in).</p>
 
 | Parameter                     | Type    | Description                                                           |
 |:------------------------------|:--------|:----------------------------------------------------------------------|
@@ -190,6 +194,30 @@ module.exports = {
 
 </details>
 
+### AmountEmojis.json
+
+**Location:** `./base/AmountEmojis.json`
+
+<p align="justify">This file defines the conditions for special emojis to appear beside the USD value in the transaction feed channel, as well as the minimum USD value for a transaction to appear in the <code>#trades</code> channel. If the <code>feedIcons</code> option in <a href="#configjson">config.json</a> is set to <code>false</code>, the emojis in this file are ignored.</p>
+
+<details><summary>Sample <code>AmountEmojis.json</code></summary>
+
+```json
+{
+	"5000": "💰",
+	"10000": "💰💰",
+	"50000": "💰💰💰",
+	"100000": "🔥",
+	"250000": "🔥🔥",
+	"500000": "🔥🔥🔥",
+	"1000000": "🐳",
+	"5000000": "🐳🐳",
+	"10000000": "🐳🐳🐳"
+}
+```
+
+</details>
+
 ## Config Options
 
 ### UserStatus
@@ -212,19 +240,19 @@ module.exports = {
 
 <img src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus1.png" align="left" height="110">
 
-```js
+```json
 {
-	name: "{trades} trades (24h)",
-	type: "WATCHING"
+	"name": "{trades} trades (24h)",
+	"type": "WATCHING"
 }
 ```
 
 <img src="https://github.com/cheesits456/0xDiscordBot/raw/readme-images/UserStatus2.png" align="left" height="110">
 
-```js
+```json
 {
-	name: "{traders} traders (24h)",
-	type: "LISTENING"
+	"name": "{traders} traders (24h)",
+	"type": "LISTENING"
 }
 ```
 
@@ -259,6 +287,18 @@ Any one of the following values:
 
 ## Commands
 
+### Bash
+
+Execute a shell command on the host machine
+
+> This command can only be executed by users set as "owner" in [config.json](#configjson)
+
+### Eval
+
+Execute a JavaScript function
+
+> This command can only be executed by users set as "owner" in [config.json](#configjson)
+
 ### Ping
 
 A basic command to check the bot's websocket and processing latency
@@ -267,17 +307,25 @@ A basic command to check the bot's websocket and processing latency
 
 Used to change the command prefix for the server the command is issued in
 
+> This command can only be executed by server administrators
+
 ### Restart
 
 Use this command to shut down and restart the bot
 
-> This command can only be executed by users set as "owner" in [config.js](#configjs)
+> This command can only be executed by users set as "owner" in [config.json](#configjson)
 
 ### Setup
 
 Use this command to create the stat channels and network transaction feed
 
-> This command can only be executed by users set as "owner" in [config.js](#configjs)
+> This command can only be executed by users set as "owner" in [config.json](#configjson)
+
+### Update
+
+Fetch the most recent version of the bot code from GitHub and automatically merge it with the currently running code
+
+> This command can only be executed by users set as "owner" in [config.json](#configjson)
 
 <hr>
 
