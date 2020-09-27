@@ -34,21 +34,8 @@ class Update extends Command {
 
 		for (const [key, value] of Object.entries(config.old)) config.new[key] = value;
 
-		await fs.promises.writeFile(
-			"./config.js",
-			[
-				"// See https://github.com/cheesits456/0xDiscordBot#configjs for documentation",
-				"",
-				`module.exports = ${require("util").inspect(config.new, {
-					depth: null,
-					maxArrayLength: null,
-					maxStringLength: null,
-					compact: false
-				})}`
-			].join("\n"),
-			"utf8"
-		);
-		await fs.promises.unlink("./config.bak.js");
+		await fs.promises.writeFile("./config.json", JSON.stringify(config.new, null, "\t"), "utf8");
+		await fs.promises.unlink("./config.bak.json");
 
 		msg.client.logger.warn(`Restarting ${msg.client.user.username} . . .`);
 
