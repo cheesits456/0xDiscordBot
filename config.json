@@ -1,0 +1,16 @@
+{
+	"feedIcons": true,
+	"owners": ["306018440639152128", "517534579335233579"],
+	"prefix": "!",
+	"statuses": [
+		{
+			"name": "{trades} trades (24h)",
+			"type": "WATCHING"
+		},
+		{
+			"name": "{traders} traders (24h)",
+			"type": "LISTENING"
+		}
+	],
+	"token": "NzUyOTM1ODc1NDI3NDM0Njc3.X1e4LQ.ODm3aVlsuxlb8jnEFch_-9RC4vk"
+}
