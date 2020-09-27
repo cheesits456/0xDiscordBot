@@ -24,6 +24,13 @@ module.exports = class {
 			return client.setTimeout(() => client.emit("trackerFill", fill), 60000);
 		}
 
+		let ignore = true;
+		for (const amount of Object.keys(require("../base/AmountEmojis"))) {
+			if (!ignore) continue;
+			if (!isNaN(Number(amount)) && fill.value.USD >= Number(amount)) ignore = false;
+		}
+		if (ignore) return;
+
 		if (client.debug === "fills")
 			client.logger.ready(
 				`${fill.retries}\t${client.functions.intFix(fill.assets[0].amount, 4)} ${
