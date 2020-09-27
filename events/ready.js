@@ -52,6 +52,7 @@ module.exports = class {
 		// trackerFill event-emitter API
 		client.setInterval(async () => {
 			const fills = await (await fetch("https://api.0xtracker.com/fills")).json();
+			if (fills.total < client._fills) client._fills = fills.total;
 			if (fills.total === client._fills) return;
 			for (let i = fills.total - client._fills - 1; i >= 0; i--) {
 				fills.fills[i].retries = 0;
