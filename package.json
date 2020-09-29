@@ -1,6 +1,6 @@
 {
 	"name": "0x-discord-bot",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "A bot created for the 0x community on Discord",
 	"main": "index.js",
 	"scripts": {
