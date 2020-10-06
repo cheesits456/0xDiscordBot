@@ -69,10 +69,11 @@ module.exports = class {
 		tweet += " ⇋ ";
 		tweet += `${toToken.amount} $${toToken.token} `;
 		if (value) tweet += `[$${value} USD] `;
-		if (emojis) tweet += `${emojis}`;
-		tweet += `\n\nTraded on ${fill.relayer?.name || "an unknown platform"}`;
-		tweet += `\nView trade 👉 0xtracker.com/fills/${fill.id}\n\n`;
+		tweet += `traded on ${fill.relayer?.name || "an unknown platform"} `;
+		if (emojis) tweet += emojis;
+		tweet += "\n";
 		tweet += new Date(fill.date).toUTCString();
+		tweet += `\n0xtracker.com/fills/${fill.id}`;
 
 		let tweetLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
 
