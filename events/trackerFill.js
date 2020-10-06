@@ -108,7 +108,7 @@ module.exports = class {
 			await channel.send(embed);
 		}
 
-		if (client.twitter && Number(value) >= 250000) {
+		if (client.twitter && Number(value.replace(/,/g, "")) >= 250000) {
 			let tweet = "";
 			if (emojis) tweet += `${emojis} `;
 			tweet += `${fromToken.amount} $${fromToken.token}`;
