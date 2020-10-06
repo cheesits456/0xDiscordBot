@@ -12,5 +12,11 @@
 			"type": "LISTENING"
 		}
 	],
-	"token": "T0K3N"
+	"token": "T0K3N",
+	"twitterTokens": {
+		"consumer_key": "",
+		"consumer_secret": "",
+		"access_token": "",
+		"access_token_secret": ""
+	}
 }
