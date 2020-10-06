@@ -1,6 +1,6 @@
 // Load environment variables from .env
 require("dotenv-defaults").config({
-	path: './.env.example',
+	defaults: './.env.example'
 });
 
 // Package to patch the way discord.js handles role mentions when
