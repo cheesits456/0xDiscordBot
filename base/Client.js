@@ -16,6 +16,13 @@ class Client extends Discord.Client {
 			error: "❌",
 			loading: "💬"
 		};
+		this.config.token = process.env.DISCORD_TOKEN;
+		this.config.twitterTokens = {
+			consumer_key: process.env.TWITTER_CONSUMER_KEY,
+			consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+			access_token: process.env.TWITTER_ACCESS_TOKEN,
+			access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+		}
 		if (this.config.feedIcons) this.config.icons = require("./Icons");
 		if (Object.values(this.config.twitterTokens).filter(a => a).length === 4)
 			this.twitter = new Twitter(this.config.twitterTokens);
