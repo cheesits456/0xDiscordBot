@@ -118,7 +118,6 @@ module.exports = class {
 			tweet += `traded on ${fill.relayer?.name || "an unknown platform"}`;
 			tweet += `\n\nDate: ${new Date(fill.date).toUTCString()}`;
 			tweet += `\nView: 0xtracker.com/fills/${fill.id}`;
-			tweet += "\n\n#0xWhaleTrades";
 
 			client.twitter.post("statuses/update", { status: tweet });
 		}
