@@ -38,6 +38,59 @@ module.exports = class {
 				}\t${client.functions.intFix(fill.assets[1].amount, 4)} ${fill.assets[1].tokenSymbol}`
 			);
 
+		const fromToken = { data: fill.assets[0] },
+			toToken = { data: fill.assets[1] };
+
+		fromToken.amount = client.functions.intFix(fromToken.data.amount, 4);
+		fromToken.token = fromToken.data.tokenSymbol;
+		fromToken.emoji = client.config.feedIcons
+			? client.emojis.cache.get(icons[fromToken.token]) || client.emojis.cache.get(icons.default) || ""
+			: "";
+
+		toToken.amount = client.functions.intFix(toToken.data.amount, 4);
+		toToken.token = toToken.data.tokenSymbol;
+		toToken.emoji = client.config.feedIcons
+			? client.emojis.cache.get(icons[toToken.token]) || client.emojis.cache.get(icons.default) || ""
+			: "";
+
+		let value = fill.value.USD ? client.functions.intFix(fill.value.USD, 2, true) : "";
+
+		let emojis = "";
+		if (fill.value.USD && client.config.feedIcons) {
+			for (const [amount, emoji] of Object.entries(require("../base/AmountEmojis"))) {
+				if (!isNaN(Number(amount))) {
+					if (fill.value.USD >= Number(amount)) emojis = emoji;
+				}
+			}
+		}
+
+		let tweetLink = "";
+		if (emojis) tweetLink += `${emojis} `;
+		tweetLink += `${fromToken.amount} $${fromToken.token}`;
+		tweetLink += " ⇋ ";
+		tweetLink += `${toToken.amount} $${toToken.token} `;
+		if (value) tweetLink += `[$${value} USD] `;
+		tweetLink += `traded on ${fill.relayer?.name || "an unknown platform"}`;
+		tweetLink += `\n\nDate: ${new Date(fill.date).toUTCString()}`;
+		tweetLink += `\nView: 0xtracker.com/fills/${fill.id}`;
+		tweetLink += "\n\n#0xDiscordBot";
+		tweetLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetLink)}`;
+
+		let message = "";
+		if (fromToken.emoji) message += `${fromToken.emoji} `;
+		message += `**${fromToken.amount}** \`${fromToken.token}\``;
+		message += "  **⇋**   ";
+		if (toToken.emoji) message += `${toToken.emoji} `;
+		message += `**${toToken.amount}** \`${toToken.token}\``;
+		if (value) message += `   [$${value} USD]`;
+		if (emojis) message += ` ${emojis}`;
+		message += `\nTraded on ${fill.relayer?.name || "an unknown platform"}`;
+		message += "  **|**  ";
+		message += `[View on 0x Tracker](<https://0xtracker.com/fills/${fill.id}>)`;
+		message += "  **|**  ";
+		if (icons?.twitter) message += `${client.emojis.cache.get(icons.twitter)}`;
+		message += `[Tweet this trade](<${tweetLink}>)`;
+
 		for (const [, guild] of client.guilds.cache) {
 			let guildData = await client.findOrCreateGuild(guild.id);
 			if (!guildData.stats.trades) continue;
@@ -48,65 +101,26 @@ module.exports = class {
 				continue;
 			}
 
-			const fromToken = { data: fill.assets[0] },
-				toToken = { data: fill.assets[1] };
-
-			fromToken.amount = client.functions.intFix(fromToken.data.amount, 4);
-			fromToken.token = fromToken.data.tokenSymbol;
-			fromToken.emoji = client.config.feedIcons
-				? client.emojis.cache.get(icons[fromToken.token]) || client.emojis.cache.get(icons.default) || ""
-				: "";
-
-			toToken.amount = client.functions.intFix(toToken.data.amount, 4);
-			toToken.token = toToken.data.tokenSymbol;
-			toToken.emoji = client.config.feedIcons
-				? client.emojis.cache.get(icons[toToken.token]) || client.emojis.cache.get(icons.default) || ""
-				: "";
-
-			let value = fill.value.USD ? client.functions.intFix(fill.value.USD, 2, true) : "";
-
-			let emojis = "";
-			if (fill.value.USD && client.config.feedIcons) {
-				for (const [amount, emoji] of Object.entries(require("../base/AmountEmojis"))) {
-					if (!isNaN(Number(amount))) {
-						if (fill.value.USD >= Number(amount)) emojis = emoji;
-					}
-				}
-			}
-
 			let embed = new Discord.MessageEmbed()
-				.setTitle(new Date(fill.date).toUTCString());
-
-			let tweetLink = "";
-			if (emojis) tweetLink += `${emojis} `;
-			tweetLink += `${fromToken.amount} $${fromToken.token}`;
-			tweetLink += " ⇋ ";
-			tweetLink += `${toToken.amount} $${toToken.token} `;
-			if (value) tweetLink += `[$${value} USD] `;
-			tweetLink += `traded on ${fill.relayer?.name || "an unknown platform"}`;
-			tweetLink += `\n\nDate: ${new Date(fill.date).toUTCString()}`;
-			tweetLink += `\nView: 0xtracker.com/fills/${fill.id}`;
-			tweetLink += "\n\n#0xDiscordBot";
-			tweetLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetLink)}`;
-
-			let message = "";
-			if (fromToken.emoji) message += `${fromToken.emoji} `;
-			message += `**${fromToken.amount}** \`${fromToken.token}\``;
-			message += "  **⇋**   ";
-			if (toToken.emoji) message += `${toToken.emoji} `;
-			message += `**${toToken.amount}** \`${toToken.token}\``;
-			if (value) message += `   [$${value} USD]`;
-			if (emojis) message += ` ${emojis}`;
-			message += `\nTraded on ${fill.relayer?.name || "an unknown platform"}`;
-			message += "  **|**  ";
-			message += `[View on 0x Tracker](<https://0xtracker.com/fills/${fill.id}>)`;
-			message += "  **|**  ";
-			if (icons?.twitter) message += `${client.emojis.cache.get(icons.twitter)}`;
-			message += `[Tweet this trade](<${tweetLink}>)`;
-
-			embed.setDescription(message);
+				.setTitle(new Date(fill.date).toUTCString())
+				.setDescription(message);
 
 			await channel.send(embed);
+		}
+
+		if (client.twitter && Number(value) >= 250000) {
+			let tweet = "";
+			if (emojis) tweet += `${emojis} `;
+			tweet += `${fromToken.amount} $${fromToken.token}`;
+			tweet += " ⇋ ";
+			tweet += `${toToken.amount} $${toToken.token} `;
+			if (value) tweet += `[$${value} USD] `;
+			tweet += `traded on ${fill.relayer?.name || "an unknown platform"}`;
+			tweet += `\n\nDate: ${new Date(fill.date).toUTCString()}`;
+			tweet += `\nView: 0xtracker.com/fills/${fill.id}`;
+			tweet += "\n\n#0xWhaleTrades";
+
+			client.twitter.post("statuses/update", { status: tweet });
 		}
 	}
 };

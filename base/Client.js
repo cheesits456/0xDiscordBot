@@ -2,7 +2,8 @@ const Discord = require("discord.js"),
 	{ Collection } = Discord,
 	fs = require("fs"),
 	util = require("util"),
-	path = require("path");
+	path = require("path"),
+	Twitter = require("twit");
 
 // Creates Client class
 class Client extends Discord.Client {
@@ -16,6 +17,8 @@ class Client extends Discord.Client {
 			loading: "💬"
 		};
 		if (this.config.feedIcons) this.config.icons = require("./Icons");
+		if (Object.values(this.config.twitterTokens).filter(a => a).length === 4)
+			this.twitter = new Twitter(this.config.twitterTokens);
 		this.commands = new Collection();
 		this.aliases = new Collection();
 		this.logger = require("../helpers/logger");
