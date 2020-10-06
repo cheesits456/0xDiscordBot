@@ -64,17 +64,17 @@ module.exports = class {
 			}
 		}
 
-		let tweetLink = "";
-		if (emojis) tweetLink += `${emojis} `;
-		tweetLink += `${fromToken.amount} $${fromToken.token}`;
-		tweetLink += " ⇋ ";
-		tweetLink += `${toToken.amount} $${toToken.token} `;
-		if (value) tweetLink += `[$${value} USD] `;
-		tweetLink += `traded on ${fill.relayer?.name || "an unknown platform"}`;
-		tweetLink += `\n\nDate: ${new Date(fill.date).toUTCString()}`;
-		tweetLink += `\nView: 0xtracker.com/fills/${fill.id}`;
-		tweetLink += "\n\n#0xDiscordBot";
-		tweetLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetLink)}`;
+		let tweet = "";
+		tweet += `${fromToken.amount} $${fromToken.token}`;
+		tweet += " ⇋ ";
+		tweet += `${toToken.amount} $${toToken.token} `;
+		if (value) tweet += `[$${value} USD] `;
+		if (emojis) tweet += `${emojis}`;
+		tweet += `\n\nTraded on ${fill.relayer?.name || "an unknown platform"}`;
+		tweet += `\nView trade 👉 0xtracker.com/fills/${fill.id}\n\n`;
+		tweet += new Date(fill.date).toUTCString();
+
+		let tweetLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
 
 		let message = "";
 		if (fromToken.emoji) message += `${fromToken.emoji} `;
@@ -101,25 +101,12 @@ module.exports = class {
 				continue;
 			}
 
-			let embed = new Discord.MessageEmbed()
-				.setTitle(new Date(fill.date).toUTCString())
-				.setDescription(message);
+			let embed = new Discord.MessageEmbed().setTitle(new Date(fill.date).toUTCString()).setDescription(message);
 
 			await channel.send(embed);
 		}
 
-		if (client.twitter && Number(value.replace(/,/g, "")) >= 250000) {
-			let tweet = "";
-			if (emojis) tweet += `${emojis} `;
-			tweet += `${fromToken.amount} $${fromToken.token}`;
-			tweet += " ⇋ ";
-			tweet += `${toToken.amount} $${toToken.token} `;
-			if (value) tweet += `[$${value} USD] `;
-			tweet += `traded on ${fill.relayer?.name || "an unknown platform"}`;
-			tweet += `\n\nDate: ${new Date(fill.date).toUTCString()}`;
-			tweet += `\nView: 0xtracker.com/fills/${fill.id}`;
-
+		if (client.twitter && Number(value.replace(/,/g, "")) >= 250000)
 			client.twitter.post("statuses/update", { status: tweet });
-		}
 	}
 };
