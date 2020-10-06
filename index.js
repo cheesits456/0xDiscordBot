@@ -1,5 +1,7 @@
 // Load environment variables from .env
-require("dotenv-defaults").config();
+require("dotenv-defaults").config({
+	path: './.env.example',
+});
 
 // Package to patch the way discord.js handles role mentions when
 // "client.options.disableMentions"  is set to "everyone"
