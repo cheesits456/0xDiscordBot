@@ -71,7 +71,7 @@ module.exports = class {
 		if (value) tweet += `[$${value} USD] `;
 		tweet += `traded on ${fill.relayer?.name || "an unknown platform"} `;
 		if (emojis) tweet += emojis;
-		tweet += "\n";
+		tweet += "\n\n";
 		tweet += new Date(fill.date).toUTCString();
 		tweet += `\n0xtracker.com/fills/${fill.id}`;
 
@@ -107,7 +107,6 @@ module.exports = class {
 			await channel.send(embed);
 		}
 
-		if (client.twitter && Number(value.replace(/,/g, "")) >= 250000)
-			client.twitter.post("statuses/update", { status: tweet });
+		if (emojis) client.twitter.post("statuses/update", { status: tweet });
 	}
 };
