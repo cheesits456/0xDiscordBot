@@ -42,6 +42,9 @@ class Update extends Command {
 			"# Discord bot auth token",
 			`DISCORD_TOKEN=${process.env.DISCORD_TOKEN || ""}`,
 			"",
+			"# Telegram bot auth token"
+			`TELEGRAM_TOKEN=${process.env.TELEGRAM_TOKEN || ""}`,
+			"",
 			"# Twitter API tokens",
 			`TWITTER_CONSUMER_KEY=${process.env.TWITTER_CONSUMER_KEY || ""}`,
 			`TWITTER_CONSUMER_SECRET=${process.env.TWITTER_CONSUMER_SECRET || ""}`,
