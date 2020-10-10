@@ -13,6 +13,7 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
   - [Installation](#installation)
 - [Configuration](#configuration)
   - [Config Files](#config-files)
+    - [.env](#env)
     - [config.json](#configjson)
 	- [Icons.js](#iconsjs)
 	- [AmountEmojis.json](#amountemojisjson)
@@ -67,22 +68,18 @@ _This is a bot for the 0x Community on Discord, created with :heart: by [cheesit
 
 ## Installation
 
-Start by cloning the git repo into a new folder:
+Run the following commands in the terminal to get started:
+
+1. `git clone https://github.com/cheesits456/0xDiscordBot.git`
+2. `cd ./0xDiscordBot`
+3. `npm install`
+4. `cp ./.env.example ./.env`
+
+Next, open the `.env` file with your text editor of choice. If you don't want Telegram or Twitter integration, simply leave those keys blank, ie:
 
 ```bash
-git clone https://github.com/cheesits456/0xDiscordBot.git
-```
-
-Next, `cd` into the directory:
-
-```bash
-cd 0xDiscordBot
-```
-
-And finally, install the node dependencies:
-
-```bash
-npm install
+# Telegram bot auth token
+TELEGRAM_TOKEN=
 ```
 
 <hr>
@@ -90,6 +87,40 @@ npm install
 # Configuration
 
 ## Config Files
+
+### .env
+
+**Location:** `./.env`
+
+A file of key-value pairs using Bash syntax (used to store API auth tokens securely).
+
+| Key                         | Description                                                                                                                        |
+|:----------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|
+| DISCORD_TOKEN               | The token for your Discord Bot (obtainable at [Discord's Developer Portal](https://discord.com/developers/applications))           |
+| TELEGRAM_TOKEN              | The token for your Telegram Bot (obtainable by messaging [@BotFather](https://t.me/BotFather) on Telegram)                         |
+| TWITTER_CONSUMER_KEY        | The API Key for your Twitter Bot (obtainable at [Twitter's Developer Portal](https://developer.twitter.com/en/portal))             |
+| TWITTER_CONSUMER_SECRET     | The API Key Secret for your Twitter Bot (obtainable at [Twitter's Developer Portal](https://developer.twitter.com/en/portal))      |
+| TWITTER_ACCESS_TOKEN        | The Access Token for your Twitter Bot (obtainable at [Twitter's Developer Portal](https://developer.twitter.com/en/portal))        |
+| TWITTER_ACCESS_TOKEN_SECRET | The Access Token Secret for your Twitter Bot (obtainable at [Twitter's Developer Portal](https://developer.twitter.com/en/portal)) |
+
+<details><summary>Sample <code>.env</code></summary>
+
+```bash
+# Discord bot auth token
+DISCORD_TOKEN=S3CR3T
+
+# Telegram bot auth token
+TELEGRAM_TOKEN=T0K3N
+
+# Twitter API tokens
+TWITTER_CONSUMER_KEY=WhyDoes
+TWITTER_CONSUMER_SECRET=Twitter
+TWITTER_ACCESS_TOKEN=HaveFourDifferent
+TWITTER_ACCESS_TOKEN_SECRET=AuthTokens
+
+```
+
+</details>
 
 ### config.json
 
@@ -101,7 +132,6 @@ npm install
 | owners    | Array&lt;UserID&gt;                    | Users who are allowed to use the restart and setup commands                                          |
 | prefix    | String                                 | The default prefix for the bot                                                                       |
 | statuses  | Array&lt;[UserStatus](#userstatus)&gt; | Bot statuses to show in member list<br>• minimum of 1<br>• no maximum<br>• cycles every 15 seconds   |
-| token     | String                                 | The token of your Discord Bot                                                                        |
 
 <details><summary>Sample <code>config.json</code></summary>
 
@@ -119,8 +149,7 @@ npm install
 	}, {
 		"name": "{traders} traders (24h)",
 		"type": "WATCHING"
-	}],
-	"token": "T0K3N"
+	}]
 };
 ```
 
@@ -198,27 +227,37 @@ module.exports = {
 
 **Location:** `./base/AmountEmojis.json`
 
-<p align="justify">This file defines the conditions for special emojis to appear beside the USD value in the transaction feed channel, as well as the minimum USD value for a transaction to appear in the <code>#trades</code> channel. If the <code>feedIcons</code> option in <a href="#configjson">config.json</a> is set to <code>false</code>, the emojis in this file are ignored.</p>
+<p align="justify">This file defines the conditions for special emojis to appear beside the USD value in the transaction feed channel. It also defines the minimum USD value for a transaction to appear in the <code>#trades</code> channel, as well as the minimum value required for a transaction to get a Twitter post.</p>
+
+<ul>
+	<li align="justify">The key with the lowest numeric value determines the minumum USD value required for a transaction to be posted in Discord</li>
+	<li align="justify">The lowest numbered key that has a non-empty value determines the minumum USD value required for a transaction to be posted on Twitter</li>
+	<li align="justify">Values don't have to be emojis, you can set different messages for different value ranges if desired</li>
+</ul>
 
 <details><summary>Sample <code>AmountEmojis.json</code></summary>
 
 ```json
 {
-	"5000": "💵",
-	"7500": "💵 💵",
-	"10000": "💵 💵 💵",
-	"25000": "💰",
-	"50000": "💰💰",
-	"75000": "💰💰💰",
-	"100000": "🔥",
-	"250000": "🔥🔥",
-	"500000": "🔥🔥🔥",
-	"750000": "🚀",
-	"1000000": "🚀🚀",
-	"2500000": "🚀🚀🚀",
-	"5000000": "🐳",
-	"7500000": "🐳🐳",
-	"10000000": "🐳🐳🐳"
+	"5000": "",
+	"200000": "💵💵💵",
+	"300000": "💵💵💵💵💵💵",
+	"400000": "💵💵💵💵💵💵💵💵💵",
+	"500000": "💰💰💰",
+	"600000": "💰💰💰💰💰💰",
+	"700000": "💰💰💰💰💰💰💰💰💰",
+	"800000": "🚀🚀🚀",
+	"900000": "🚀🚀🚀🚀🚀🚀",
+	"1000000": "🚀🚀🚀🚀🚀🚀🚀🚀🚀",
+	"2000000": "🔥🔥🔥",
+	"3000000": "🔥🔥🔥🔥🔥🔥",
+	"4000000": "🔥🔥🔥🔥🔥🔥🔥🔥🔥",
+	"5000000": "🐳🐳🐳",
+	"6000000": "🐳🐳🐳🐳🐳🐳",
+	"7000000": "🐳🐳🐳🐳🐳🐳🐳🐳🐳",
+	"8000000": "🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳",
+	"9000000": "🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳",
+	"10000000": "🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳"
 }
 ```
 
