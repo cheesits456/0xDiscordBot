@@ -1,6 +1,9 @@
 const chalk = require("chalk"),
 	{ black, blueBright, cyanBright, greenBright, grey, magenta, redBright, yellow } = chalk;
 
+// Make the logger always output color escape codes
+chalk.level = 1;
+
 const splice = (string, i, r, s) => `${string.slice(0, i)}${s}${string.slice(i + Math.abs(r))}`;
 
 const format = d =>
