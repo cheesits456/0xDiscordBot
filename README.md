@@ -379,6 +379,7 @@ Fetch the most recent version of the bot code from GitHub and automatically merg
 <img alt="Profile Pic" src="https://github.com/cheesits456/cheesits456/raw/master/avatar.gif" align="left" height="75">
 
 ### [cheesits456][github] <br> [![EMail][email-img]][email] [![Website][website-img]][website]
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcheesits456%2F0xDiscordBot.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcheesits456%2F0xDiscordBot?ref=badge_shield)
 
 <hr>
 
@@ -399,3 +400,6 @@ This project is licensed under [AGPL-3.0][license]
 [github]:	https://github.com/cheesits456
 [license]:	https://github.com/cheesits456/0xDiscordBot/blob/master/LICENSE.md
 [website]:	https://cheesits456.dev
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcheesits456%2F0xDiscordBot.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcheesits456%2F0xDiscordBot?ref=badge_large)
